@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About Us - The Celtic Couple{% endblock %}
+
+{% block meta_description %}Learn more about The Celtic Couple, our mission, and our journey celebrating Celtic heritage through travel and culture.{% endblock %}
+{% block meta_keywords %}About, Celtic Couple, Heritage, Travel, Culture{% endblock %}
+
+{% block content %}
+<section id="about" class="py-5">
+    <div class="container">
+        <h1 class="mb-4">About Us</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'images/about_placeholder.jpg' %}" alt="About The Celtic Couple" class="img-fluid mb-4">
+            </div>
+            <div class="col-md-6">
+                <p>We are a couple passionate about exploring Celtic heritage and sharing our adventures with the world. Our journey began when...</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

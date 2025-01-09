@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Work With Us - The Celtic Couple{% endblock %}
+
+{% block meta_description %}Discover collaboration opportunities with The Celtic Couple to celebrate and preserve Celtic heritage.{% endblock %}
+{% block meta_keywords %}Work With Us, Collaboration, Partnership, Celtic Heritage, The Celtic Couple{% endblock %}
+
+{% block content %}
+<section id="work-with-us" class="py-5">
+    <div class="container">
+        <h1 class="mb-4">Work With Us</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'images/work_placeholder.jpg' %}" alt="Work With The Celtic Couple" class="img-fluid mb-4">
+            </div>
+            <div class="col-md-6">
+                <p>Interested in collaborating with us? We'd love to hear from you!</p>
+                <a href="{% url 'contact' %}" class="btn btn-secondary mt-3">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
