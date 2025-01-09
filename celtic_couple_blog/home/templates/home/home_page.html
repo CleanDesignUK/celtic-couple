@@ -1,21 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block body_class %}template-homepage{% endblock %}
+{% block title %}Home - The Celtic Couple{% endblock %}
 
-{% block extra_css %}
-
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
-{% endblock extra_css %}
+{% block meta_description %}Welcome to The Celtic Couple's travel blog, celebrating Celtic heritage, culture, and adventures.{% endblock %}
+{% block meta_keywords %}Celtic, Travel, Blog, Heritage, Culture{% endblock %}
 
 {% block content %}
-
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-{% include 'home/welcome_page.html' %}
-
-{% endblock content %}
+<section id="home" class="py-5">
+    <div class="container">
+        <h1 class="mb-4">Welcome to The Celtic Couple</h1>
+        <img src="{% static 'images/home_placeholder.jpg' %}" alt="Celtic Couple" class="img-fluid mb-4">
+        <p>Welcome to our travel blog where we celebrate Celtic heritage, culture, and adventures. Join us as we explore beautiful destinations and share our stories.</p>
+    </div>
+</section>
+{% endblock %}

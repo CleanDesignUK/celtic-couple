@@ -13,10 +13,11 @@ urlpatterns = [
 
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
+    path('', include('home.urls')),  # Include 'home' app's URLs first
     path('', include('pages.urls')),  # Include 'pages' app's URLs first
-
+    path('blog/', include('blog.urls')), # Blog app
     path('search/', search_views.search, name='search'),
-
+    path('', include(wagtail_urls)),  # Wagtail's catch-all
 ]
 
 

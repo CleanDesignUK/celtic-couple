@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'home',
     'search',
     'pages',  # Newly added pages app
+    'blog',  # Newly added blog app
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
