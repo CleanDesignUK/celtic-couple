@@ -6,11 +6,25 @@
 {% block meta_description %}Welcome to The Celtic Couple's travel blog, celebrating Celtic heritage, culture, and adventures.{% endblock %}
 {% block meta_keywords %}Celtic, Travel, Blog, Heritage, Culture{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock extra_css %}
+
 {% block content %}
-<section id="home" class="py-5">
+<!-- Hero Banner -->
+<section id="hero-banner" class="text-center text-white">
+    <div class="container d-flex-column justify-content-center align-items-center">
+        <h1 class="display-4 text-center">Adventure Awaits</h1>
+        <p class="lead">Join us as we explore the world and celebrate our Celtic heritage.</p>
+        <a href="{% url 'blog_list' %}" class="btn btn-primary">Read Our Blog</a>
+    </div>
+</section>
+
+<!-- Introduction Section -->
+<section id="introduction" class="py-5">
     <div class="container">
-        <h1 class="mb-4">Welcome to The Celtic Couple</h1>
-        <img src="{% static 'images/home_placeholder.jpg' %}" alt="Celtic Couple" class="img-fluid mb-4">
+        <h2>About Us</h2>
+        <img src="" alt="Celtic Couple" class="home-image mb-4">
         <p>Welcome to our travel blog where we celebrate Celtic heritage, culture, and adventures. Join us as we explore beautiful destinations and share our stories.</p>
     </div>
 </section>

@@ -1,0 +1,184 @@
+/* styles.css */
+
+/* 1. Color Palette */
+:root {
+    --primary-color: #FF0000; /* Red */
+    --secondary-color: #FFFFFF; /* White */
+    --accent-color: #000000; /* Black */
+}
+
+/* 2. Reset Margins and Padding */
+body, h1, h2, h3, p, ul, li, a, blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+/* 3. Typography */
+body {
+    font-family: 'CenzoFlare-Black', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--accent-color);
+    background-color: var(--secondary-color);
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-family: 'GT Super Display Regular', sans-serif;
+    color: var(--accent-color);
+    text-align: left;
+}
+
+h1 {
+    font-size: 48px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 36px;
+    letter-spacing: 0.4px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+h3 {
+    font-size: 28px;
+    letter-spacing: 0.3px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: 16px;
+    color: var(--accent-color);
+}
+
+/* Links */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+/* Navbar */
+.navbar-brand {
+    font-family: 'Product Sans Regular', sans-serif;
+    color: var(--accent-color) !important;
+    font-size: 24px;
+}
+
+.nav-link {
+    font-family: 'Product Sans Regular', sans-serif;
+    color: var(--accent-color) !important;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Buttons */
+
+/* Primary Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+}
+
+/* Secondary Buttons */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    border-color: var(--accent-color);
+}
+
+/* Footer Links */
+footer a {
+    color: var(--accent-color);
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 16px;
+    font-style: italic;
+    color: var(--primary-color);
+    margin: 20px 0;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Responsive Grid Overrides */
+.container {
+    max-width: 1200px;
+}
+
+/* Footer Positioning */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .btn-primary, .btn-secondary {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
