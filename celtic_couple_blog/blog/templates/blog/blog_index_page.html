@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block title %}Blog - The Celtic Couple{% endblock %}
 
@@ -7,32 +7,94 @@
 {% block meta_keywords %}Blog, Celtic, Travel, Heritage, Adventures{% endblock %}
 
 {% block content %}
-<section id="blog" class="py-5">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<section id="blog" class="py-5 bg-white">
     <div class="container">
-        <h1 class="mb-4">Our Blog</h1>
+        <h1 class="mb-5 text-center">Our Blog</h1>
         <div class="row">
             {% for post in posts %}
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 minimalist-card">
                         {% if post.gallery_images.first.image %}
-                            <img src="{{ post.gallery_images.first.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                            <a href="{% pageurl post %}">
+                                <img src="{{ post.gallery_images.first.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                            </a>
                         {% elif post.image %}
-                            <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                            <a href="{% pageurl post %}">
+                                <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                            </a>
                         {% endif %}
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">{{ post.title }}</h5>
-                            <p class="card-text">{{ post.intro|truncatechars:150 }}</p>
-                            <a href="{% pageurl post %}" class="mt-auto btn btn-primary">Read More</a>
+                            <h5 class="card-title text-black">
+                                <a href="{% pageurl post %}" class="text-black text-decoration-none">{{ post.title }}</a>
+                            </h5>
+                            <p class="card-text text-darkgrey">{{ post.intro|truncatechars:150 }}</p>
+                            <a href="{% pageurl post %}" class="mt-auto btn btn-primary btn-read-more">Read More</a>
                         </div>
-                        <div class="card-footer text-muted">
-                            Posted by {% if post.author %}{{ post.author.name }}{% else %}Unknown{% endif %} on {{ post.date|date:"F d, Y" }}
+                        <div class="card-footer text-muted bg-white border-top-0">
+                            Posted by 
+                            {% if post.author %}
+                                {{ post.author.name }}
+                            {% else %}
+                                Unknown
+                            {% endif %}
+                            on {{ post.date|date:"F d, Y" }}
                         </div>
                     </div>
                 </div>
             {% empty %}
-                <p>No blog posts available.</p>
+                <div class="col-12">
+                    <p class="text-center">No blog posts available.</p>
+                </div>
             {% endfor %}
         </div>
+        
+        <!-- Pagination -->
+        {% if is_paginated %}
+            <nav aria-label="Blog Pagination">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </span>
+                        </li>
+                    {% endif %}
+                    
+                    {% for num in paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </span>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
     </div>
 </section>
 {% endblock %}

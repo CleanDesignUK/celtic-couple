@@ -7,35 +7,40 @@
 {% block meta_keywords %}Blog, {{ page.title }}, Celtic, Travel, Heritage{% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/blog.css' %}">
-<section id="blog-detail" class="py-5">
+<link rel="stylesheet" href="{% static 'css/blog-page.css' %}">
+<section id="blog-detail" class="py-5 bg-white">
     <div class="container">
-        <h1 class="mb-4">{{ page.title }}</h1>
-        <p class="text-muted">
-            Posted by 
-            {% if page.author %}
-                {{ page.author.name }}
-            {% else %}
-                Unknown
-            {% endif %}
-            on {{ page.date|date:"F d, Y" }}
-        </p>
+        <!-- Post Header -->
+        <header class="mb-4">
+            <h1 class="display-4 text-black">{{ page.title }}</h1>
+            <p class="text-muted">
+                Posted by 
+                {% if page.author %}
+                    {{ page.author.name }}
+                {% else %}
+                    Unknown
+                {% endif %}
+                on {{ page.date|date:"F d, Y" }}
+            </p>
+        </header>
         
-        <!-- Display Intro -->
-        <p class="lead">{{ page.intro }}</p>
+        <!-- Intro -->
+        <div class="mb-4">
+            <p class="lead text-darkgrey">{{ page.intro }}</p>
+        </div>
         
         <!-- Gallery Images -->
         {% if page.gallery_images.all %}
-            <div class="gallery mb-4">
+            <div class="gallery mb-5">
                 <div class="row">
                     {% for gallery_image in page.gallery_images.all %}
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-4">
                             <a href="{{ gallery_image.image.url }}" data-lightbox="blog-gallery" data-title="{{ gallery_image.caption }}">
-                                {% image gallery_image.image fill-400x300 as rendition %}
-                                <img src="{{ rendition.url }}" alt="{{ gallery_image.caption }}" class="img-fluid rounded" loading="lazy">
+                                {% image gallery_image.image fill-800x600 as rendition %}
+                                <img src="{{ rendition.url }}" alt="{{ gallery_image.caption }}" class="img-fluid rounded shadow-sm" loading="lazy">
                             </a>
                             {% if gallery_image.caption %}
-                                <p class="text-center text-muted">{{ gallery_image.caption }}</p>
+                                <p class="text-center text-muted mt-2">{{ gallery_image.caption }}</p>
                             {% endif %}
                         </div>
                     {% endfor %}
@@ -46,6 +51,21 @@
         <!-- Blog Body -->
         <div class="blog-body">
             {{ page.body|richtext }}
+        </div>
+        
+        <!-- Share Icons -->
+        <div class="share-icons my-4">
+            <span>Share:</span>
+            <a href="#" class="text-red mx-2" aria-label="Share on Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-red mx-2" aria-label="Share on Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-red mx-2" aria-label="Share on Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <!-- Add more share icons as needed -->
         </div>
         
         <!-- Back to Blog Index -->

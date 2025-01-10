@@ -1,4 +1,7 @@
 # blog/views.py
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import BlogPage
 
 from django.shortcuts import render, get_object_or_404
 from .models import Post
@@ -10,3 +13,6 @@ def blog_list_view(request):
 def blog_detail_view(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/blog_page.html', {'post': post})
+
+
+
