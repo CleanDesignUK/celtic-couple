@@ -1,17 +1,17 @@
 # blog/models.py
 
 from django.db import models
-from wagtail.models import Page  # Updated import
+from wagtail.models import Page
 from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
     MultiFieldPanel,
 )
-from wagtail.fields import RichTextField  # Updated import
+from wagtail.fields import RichTextField
 from wagtail.images.models import Image
 from wagtail.snippets.models import register_snippet
 from modelcluster.fields import ParentalKey
-
+from wagtail.models import Orderable  # Import Orderable
 
 @register_snippet
 class Author(models.Model):
@@ -28,14 +28,14 @@ class Author(models.Model):
     panels = [
         FieldPanel('name'),
         FieldPanel('bio'),
-        FieldPanel('photo'),  # Updated for Wagtail 3.0+
+        FieldPanel('photo'),
     ]
 
     def __str__(self):
         return self.name
 
 
-class BlogPageGalleryImage(models.Model):
+class BlogPageGalleryImage(Orderable):  # Inherit from Orderable
     page = ParentalKey('BlogPage', on_delete=models.CASCADE, related_name='gallery_images')
     image = models.ForeignKey(
         Image,
@@ -45,11 +45,12 @@ class BlogPageGalleryImage(models.Model):
     caption = models.CharField(max_length=250, blank=True)
 
     panels = [
-        FieldPanel('image'),  # Updated for Wagtail 3.0+
+        FieldPanel('image'),
         FieldPanel('caption'),
     ]
 
     class Meta:
+        ordering = ['sort_order']  # Ensure ordering by sort_order
         verbose_name = "Gallery Image"
         verbose_name_plural = "Gallery Images"
 

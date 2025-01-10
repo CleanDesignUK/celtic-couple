@@ -1,21 +1,39 @@
-/* blog.css */
+/* blog/static/css/blog.css */
 
-/* Minimalist Card Styling */
-.minimalist-card {
+/* Hero Section Styling */
+#blog-hero {
+    background-image: url('/static/images/hero-background.jpg'); /* Optional: Add a background image */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+#blog-hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+#blog-hero p.lead {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+}
+
+/* Professional Card Styling */
+.professional-card {
     border: 1px solid #DDDDDD;
-    border-radius: 10px;
+    border-radius: 0; /* Removed rounded corners */
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-color: #fff;
 }
 
-.minimalist-card:hover {
+.professional-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Card Image */
-.minimalist-card .card-img-top {
+.professional-card .card-img-top {
     height: 200px;
     object-fit: cover;
     border-bottom: 1px solid #DDDDDD;
@@ -36,22 +54,21 @@
 
 /* Card Text */
 .card-text {
-    color: #333333;
+    color: #555555;
     font-size: 16px;
     line-height: 1.6;
 }
 
 /* Read More Button */
-.btn-read-more {
-    background-color: #FF0000;
-    border: 2px solid #FF0000;
-    color: #fff;
+.btn-outline-danger {
+    border-color: #FF0000;
+    color: #FF0000;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn-read-more:hover {
-    background-color: #fff;
-    color: #FF0000;
+.btn-outline-danger:hover {
+    background-color: #FF0000;
+    color: #fff;
 }
 
 /* Pagination */
@@ -78,7 +95,7 @@
 }
 
 .text-darkgrey {
-    color: #333333;
+    color: #555555;
 }
 
 .text-red {
@@ -87,7 +104,11 @@
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .minimalist-card .card-img-top {
+    #blog-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .professional-card .card-img-top {
         height: 150px;
     }
 
@@ -98,4 +119,42 @@
     .pagination .page-link {
         padding: 0.5rem 0.75rem;
     }
+}
+
+/* Additional Styling */
+
+/* Remove default link underlines */
+a.text-decoration-none {
+    text-decoration: none;
+}
+
+a.text-decoration-none:hover {
+    text-decoration: none;
+}
+
+/* Footer Styling */
+.card-footer {
+    font-size: 0.9rem;
+}
+
+/* Button Icon Alignment */
+.btn-outline-danger i {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Hero Section Icon Styling */
+#blog-hero .bi {
+    font-size: 1.5rem;
+    margin-right: 5px;
+}
+
+/* Social Share Icons */
+.social-share a {
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-share a:hover {
+    color: #FF0000;
 }
