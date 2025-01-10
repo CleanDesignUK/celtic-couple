@@ -5,8 +5,8 @@ from .models import Post
 
 def blog_list_view(request):
     posts = Post.objects.all().order_by('-created_at')
-    return render(request, 'blog/blog_list.html', {'posts': posts})
+    return render(request, 'blog/blog_index_page.html', {'posts': posts})
 
 def blog_detail_view(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/blog_detail.html', {'post': post})
+    return render(request, 'blog/blog_page.html', {'post': post})

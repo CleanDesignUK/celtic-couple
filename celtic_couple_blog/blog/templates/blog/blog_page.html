@@ -1,24 +1,55 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static wagtailimages_tags wagtailcore_tags %}
 
-{% block title %}{{ post.title }} - The Celtic Couple{% endblock %}
+{% block title %}{{ page.title }} - The Celtic Couple{% endblock %}
 
-{% block meta_description %}{{ post.content|truncatechars:160 }}{% endblock %}
-{% block meta_keywords %}Blog, {{ post.title }}, Celtic, Travel, Heritage{% endblock %}
+{% block meta_description %}{{ page.intro|truncatechars:160 }}{% endblock %}
+{% block meta_keywords %}Blog, {{ page.title }}, Celtic, Travel, Heritage{% endblock %}
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 <section id="blog-detail" class="py-5">
     <div class="container">
-        <h1 class="mb-4">{{ post.title }}</h1>
-        <p class="text-muted">Posted by {{ post.author }} on {{ post.created_at|date:"F d, Y" }}</p>
-        {% if post.image %}
-            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid mb-4">
+        <h1 class="mb-4">{{ page.title }}</h1>
+        <p class="text-muted">
+            Posted by 
+            {% if page.author %}
+                {{ page.author.name }}
+            {% else %}
+                Unknown
+            {% endif %}
+            on {{ page.date|date:"F d, Y" }}
+        </p>
+        
+        <!-- Display Intro -->
+        <p class="lead">{{ page.intro }}</p>
+        
+        <!-- Gallery Images -->
+        {% if page.gallery_images.all %}
+            <div class="gallery mb-4">
+                <div class="row">
+                    {% for gallery_image in page.gallery_images.all %}
+                        <div class="col-md-4 mb-3">
+                            <a href="{{ gallery_image.image.url }}" data-lightbox="blog-gallery" data-title="{{ gallery_image.caption }}">
+                                {% image gallery_image.image fill-400x300 as rendition %}
+                                <img src="{{ rendition.url }}" alt="{{ gallery_image.caption }}" class="img-fluid rounded" loading="lazy">
+                            </a>
+                            {% if gallery_image.caption %}
+                                <p class="text-center text-muted">{{ gallery_image.caption }}</p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         {% endif %}
-        <div>
-            {{ post.content|linebreaks }}
+        
+        <!-- Blog Body -->
+        <div class="blog-body">
+            {{ page.body|richtext }}
         </div>
-        <a href="{% url 'blog_list' %}" class="btn btn-secondary mt-3">Back to Blog</a>
+        
+        <!-- Back to Blog Index -->
+        <a href="{% pageurl page.get_parent %}" class="btn btn-secondary mt-3">Back to Blog</a>
     </div>
 </section>
 {% endblock %}

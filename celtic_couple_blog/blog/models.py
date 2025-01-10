@@ -1,10 +1,12 @@
+# blog/models.py
+
 from django.db import models
 from wagtail.models import Page  # Updated import
 from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
     MultiFieldPanel,
-)  # Updated import for panels
+)
 from wagtail.fields import RichTextField  # Updated import
 from wagtail.images.models import Image
 from wagtail.snippets.models import register_snippet
