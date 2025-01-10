@@ -1,0 +1,59 @@
+/* Import this CSS in your base.html or relevant templates */
+
+.minimalist-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+.minimalist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.minimalist-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-body {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.blog-detail img {
+    border-radius: 8px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-hover-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .minimalist-card .card-img-top {
+        height: 150px;
+    }
+
+    .blog-body {
+        font-size: 16px;
+    }
+}

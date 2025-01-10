@@ -1,41 +1,45 @@
+# celtic_couple_blog/urls.py
+
 from django.conf import settings
 from django.urls import include, path
 from django.contrib import admin
 
 from wagtail.admin import urls as wagtailadmin_urls
-from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
+from wagtail import urls as wagtail_urls  # Updated import
 
 from search import views as search_views
 
 urlpatterns = [
+    # Django's default admin interface (optional)
     path('django-admin/', admin.site.urls),
 
-    path('admin/', include(wagtailadmin_urls)),
-    path('documents/', include(wagtaildocs_urls)),
-    path('', include('home.urls')),  # Include 'home' app's URLs first
-    path('', include('pages.urls')),  # Include 'pages' app's URLs first
-    path('blog/', include('blog.urls')), # Blog app
-    path('search/', search_views.search, name='search'),
-    path('', include(wagtail_urls)),  # Wagtail's catch-all
-]
+    # Wagtail's admin interface
+    path('cms/admin/', include(wagtailadmin_urls)),
 
+    # Wagtail's documents
+    path('cms/documents/', include(wagtaildocs_urls)),
+
+    # Your custom home page at root
+    path('', include('home.urls')),  # Serves '/' URL
+
+    # Your custom pages (About, Contact, Work With Us, etc.)
+    path('', include('pages.urls')),  # Serves '/about/', '/contact/', etc.
+
+    # Blog Django App (if using Option 2 above)
+    # path('blog/', include('blog.urls', namespace='blog')),  # Uncomment if needed
+
+    # Search functionality
+    path('search/', search_views.search, name='search'),
+
+    # Wagtail's page serving under 'cms/'
+    path('cms/', include(wagtail_urls)),
+]
 
 if settings.DEBUG:
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-    # Serve static and media files from development server
+    # Serve static and media files during development
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-urlpatterns = urlpatterns + [
-    # For anything not caught by a more specific rule above, hand over to
-    # Wagtail's page serving mechanism. This should be the last pattern in
-    # the list:
-    path("", include(wagtail_urls)),
-
-    # Alternatively, if you want Wagtail pages to be served from a subpath
-    # of your site, rather than the site root:
-    #    path("pages/", include(wagtail_urls)),
-]

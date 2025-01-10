@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags %}
+
+{% block title %}Blog - The Celtic Couple{% endblock %}
+
+{% block meta_description %}Read the latest posts from The Celtic Couple's travel blog, celebrating Celtic heritage and adventures.{% endblock %}
+{% block meta_keywords %}Blog, Celtic, Travel, Heritage, Adventures{% endblock %}
+
+{% block content %}
+<section id="blog" class="py-5">
+    <div class="container">
+        <h1 class="mb-4">Our Blog</h1>
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 minimalist-card">
+                        {% if post.gallery_images.first.image %}
+                            <img src="{{ post.gallery_images.first.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                        {% elif post.image %}
+                            <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                        {% endif %}
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <p class="card-text">{{ post.intro|truncatechars:150 }}</p>
+                            <a href="{% pageurl post %}" class="mt-auto btn btn-primary">Read More</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted by {% if post.author %}{{ post.author.name }}{% else %}Unknown{% endif %} on {{ post.date|date:"F d, Y" }}
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No blog posts available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

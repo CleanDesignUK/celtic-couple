@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -23,11 +21,21 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Application definition
 
+# Define paths
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(PROJECT_DIR)
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale/'),
+]
+
 INSTALLED_APPS = [
     'home',
     'search',
-    'pages',  # Newly added pages app
-    'blog',  # Newly added blog app
+    'pages',
+    'blog',
+
+    # Wagtail apps
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -38,11 +46,12 @@ INSTALLED_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
-    'wagtail.core',
+    'wagtail',
 
     'modelcluster',
     'taggit',
 
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,6 +70,10 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale/'),
 ]
 
 ROOT_URLCONF = 'celtic_couple_blog.urls'
@@ -114,6 +127,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
 
 
 # Internationalization
