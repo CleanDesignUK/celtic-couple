@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block title %}Home - The Celtic Couple{% endblock %}
 
@@ -294,21 +295,44 @@
 </section>
 
 <!-- Top Blog Post -->
+<!-- Top Blog Post -->
 <section id="top-blog-post" class="top-blog-post offwhite-section py-5">
     <div class="container">
         <h2 class="section-title text-center mb-4">Featured Blog Post</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card mb-4">
-                    <img src="{% static 'images/top_blog_placeholder.jpg' %}" class="card-img-top" alt="Top Blog Post">
-                    <div class="card-body">
-                        <h3 class="card-title">Exciting Adventures in the Highlands</h3>
-                        <p class="card-text">Discover the breathtaking landscapes and rich culture of the Scottish Highlands in our latest blog post.</p>
-                        <a href="/cms/blog/exciting-adventures-in-the-highlands/" class="btn btn-primary">Read More</a>
+        
+        {% if featured_post %}
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card mb-4">
+                        <!-- Featured Image -->
+                        {% if featured_post.gallery_images.first %}
+                            <!-- If you’re using Wagtail’s image renditions -->
+                            {% image featured_post.gallery_images.first.image fill-800x600 as rendition %}
+                            <img src="{{ rendition.url }}" class="card-img-top" alt="{{ featured_post.title }}">
+                        {% else %}
+                            <!-- Fallback if no gallery image -->
+                            <img src="{% static 'images/top_blog_placeholder.jpg' %}" 
+                                 class="card-img-top" alt="{{ featured_post.title }}">
+                        {% endif %}
+                        
+                        <div class="card-body">
+                            <h3 class="card-title">{{ featured_post.title }}</h3>
+                            <!-- Truncate the intro for preview -->
+                            <p class="card-text">{{ featured_post.intro|truncatechars:120 }}</p>
+                            
+                            <!-- Link to the full post -->
+                            <!-- Use Wagtail's pageurl tag to generate the correct URL -->
+                            <a href="{% pageurl featured_post %}" class="btn btn-primary">
+                                Read More
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {% else %}
+            <!-- Fallback if no featured_post is found -->
+            <p class="text-center">No blog posts are currently available.</p>
+        {% endif %}
     </div>
 </section>
 
