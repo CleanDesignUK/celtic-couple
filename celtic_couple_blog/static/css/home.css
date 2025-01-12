@@ -1,15 +1,39 @@
-/* Hero Banner Styles */
-#hero-banner {
+/* home.css */
+:root {
+    --primary-color: #FF0000; /* Red */
+    --secondary-color: #FFFFFF; /* White */
+    --accent-color: #000000; /* Black */
+}
+/* Red Background with White Text */
+.red-section {
+    background-color: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
+}
+
+/* Off-White Background with Black Text */
+.offwhite-section {
+    background-color: #f8f9fa !important; /* Assuming off-white as #f8f9fa */
+    color: var(--accent-color) !important;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: inherit !important; /* Inherits color from parent section */
+}
+
+/* Hero Banner Specific Styles */
+.hero-banner {
     background: url("{% static 'images/hero_placeholder.jpg' %}") no-repeat center center/cover;
     position: relative;
     height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Fallback color */
 }
 
-#hero-banner::after {
+.hero-banner::after {
     content: "";
     position: absolute;
     top: 0;
@@ -19,176 +43,227 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#hero-banner .container {
+.hero-banner .container {
     position: relative;
     z-index: 1;
 }
 
-#hero-banner h1 {
+.hero-banner h1 {
     font-size: 48px;
-    color: var(--secondary-color);
     margin-bottom: 20px;
     letter-spacing: 0.5px;
 }
 
-#hero-banner p {
+.hero-banner p {
     font-size: 24px;
-    color: var(--secondary-color);
     margin-bottom: 30px;
     letter-spacing: 0.3px;
 }
 
-#hero-banner .btn-primary {
+.hero-banner .btn-primary {
     font-size: 18px;
     padding: 10px 20px;
 }
 
-/* Intro Sections */
-#intros .intro-card {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
+/* Top Blog Post Specific Styles */
+.top-blog-post .card {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#intros .intro-card:hover {
+.top-blog-post .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
 
-#intros .intro-image {
-    width: 100%;
-    height: 200px;
+.top-blog-post .card-img-top {
+    height: 300px;
     object-fit: cover;
 }
 
-#intros .intro-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-#intros .intro-content h3 {
+.top-blog-post .card-title {
     font-size: 24px;
-    color: var(--accent-color);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-#intros .intro-content p {
-    flex-grow: 1;
+.top-blog-post .card-text {
     font-size: 16px;
-    color: #555;
-    margin-bottom: 20px;
+    color: #555 !important;
 }
 
-#intros .intro-content .btn-secondary {
-    align-self: flex-start;
+.top-blog-post .btn-primary {
+    background-color: var(--primary-color) !important;
+    border: none;
 }
 
-/* Latest Blog Posts */
-#latest-blog h2 {
-    font-size: 32px;
-    color: var(--accent-color);
-    margin-bottom: 40px;
+.top-blog-post .btn-primary:hover {
+    background-color: var(--accent-color) !important;
 }
 
-#latest-blog .card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* General Blog Link Specific Styles */
+.general-blog-link {
+    background-color: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
 }
 
-#latest-blog .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+.general-blog-link h2 {
+    color: var(--secondary-color) !important;
 }
 
-#latest-blog .card-img-top {
-    height: 200px;
+.general-blog-link .btn-secondary {
+    background-color: transparent;
+    color: var(--secondary-color) !important;
+    border: 2px solid var(--secondary-color) !important;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.general-blog-link .btn-secondary:hover {
+    background-color: var(--accent-color) !important;
+    color: var(--secondary-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+/* Image Gallery Section Specific Styles */
+.image-gallery img {
+    border-radius: 8px;
+}
+
+.image-gallery .carousel-inner img {
+    height: 300px;
     object-fit: cover;
 }
 
-#latest-blog .card-title {
-    font-size: 20px;
-    color: var(--secondary-color);
+.image-gallery .carousel-control-prev-icon,
+.image-gallery .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
 }
 
-#latest-blog .card-text {
-    font-size: 14px;
-    color: #666;
-}
+/* Masonry Layout for Large Screens */
+@media (min-width: 992px) {
+    .gallery-masonry .masonry {
+        column-count: 3;
+        column-gap: 15px;
+    }
 
-#latest-blog .btn-primary {
-    margin-top: auto;
-}
-
-/* Common Styles */
-section {
-    padding: 60px 0;
-}
-
-.container {
-    max-width: 1200px;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.btn-secondary {
-    background-color: var(--secondary-color);
-    border: none;
-    color: #fff;
-    transition: background-color 0.3s ease;
-}
-
-.btn-secondary:hover {
-    background-color: var(--secondary-hover-color);
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    border: none;
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-hover-color);
+    .gallery-masonry .masonry img {
+        width: 100%;
+        margin-bottom: 15px;
+        display: inline-block;
+    }
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    #hero-banner {
+    .hero-banner {
         height: 60vh;
     }
 
-    #hero-banner h1 {
+    .hero-banner h1 {
         font-size: 36px;
     }
 
-    #hero-banner p {
+    .hero-banner p {
         font-size: 18px;
     }
 
-    #intros .intro-image {
-        height: 150px;
+    .top-blog-post .card-img-top {
+        height: 250px;
     }
 
-    #intros .intro-content h3 {
-        font-size: 20px;
+    .image-gallery .carousel-inner img {
+        height: 250px;
     }
 
-    #intros .intro-content p {
-        font-size: 14px;
+    .image-gallery .carousel-control-prev-icon,
+    .image-gallery .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.3);
     }
+}
 
-    #latest-blog h2 {
-        font-size: 28px;
-    }
+/* About Us Specific Styles */
+.about-us h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
 
-    #latest-blog .card-img-top {
-        height: 150px;
-    }
+.about-us p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.about-us .btn-secondary {
+    background-color: transparent;
+    color: var(--secondary-color) !important;
+    border: 2px solid var(--secondary-color) !important;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.about-us .btn-secondary:hover {
+    background-color: var(--accent-color) !important;
+    color: var(--secondary-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+/* Contact Section Specific Styles */
+.contact h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.contact p {
+    font-size: 16px;
+    color: #333 !important;
+    margin-bottom: 20px;
+}
+
+.contact ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact ul li {
+    font-size: 16px;
+    color: #333 !important;
+    margin-bottom: 10px;
+}
+
+.contact ul li a {
+    color: var(--primary-color) !important;
+}
+
+.contact .btn-danger {
+    background-color: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact .btn-danger:hover {
+    background-color: var(--accent-color) !important;
+    color: var(--secondary-color) !important;
+}
+
+/* Work With Us Specific Styles */
+.work-with-us h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.work-with-us p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.work-with-us .btn-secondary {
+    background-color: transparent;
+    color: var(--secondary-color) !important;
+    border: 2px solid var(--secondary-color) !important;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.work-with-us .btn-secondary:hover {
+    background-color: var(--accent-color) !important;
+    color: var(--secondary-color) !important;
+    border-color: var(--accent-color) !important;
 }

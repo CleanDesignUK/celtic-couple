@@ -1,47 +1,131 @@
-/* blog/static/css/blog.css */
+/* ---------------------------------- */
+/* Import a clean, modern typeface    */
+/* ---------------------------------- */
 
-/* Hero Section Styling */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    background-color: #F8F9FA;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------------------------------- */
+/* Hero Section                       */
+/* ---------------------------------- */
+
 #blog-hero {
-    background-image: url('/static/images/hero-background.jpg'); /* Optional: Add a background image */
+    position: relative;
+    background-image: url('/static/images/hero-background.jpg'); /* Or replace with your chosen hero image */
     background-size: cover;
     background-position: center;
     color: #fff;
+    padding: 6rem 0; /* Increase top and bottom padding for more impact */
+}
+
+#blog-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Subtle overlay to enhance text contrast */
+    z-index: 0;
+}
+
+#blog-hero .container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
 }
 
 #blog-hero h1 {
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 #blog-hero p.lead {
-    font-size: 1.25rem;
-    margin-top: 1rem;
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
 }
 
-/* Professional Card Styling */
+/* ---------------------------------- */
+/* Section Headings                   */
+/* ---------------------------------- */
+
+section h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #FF0000;
+    margin: 0.5rem auto 0;
+    border-radius: 3px;
+}
+
+/* ---------------------------------- */
+/* Blog Cards / Posts                 */
+/* ---------------------------------- */
+
 .professional-card {
-    border: 1px solid #DDDDDD;
-    border-radius: 0; /* Removed rounded corners */
+    background-color: #fff;
+    border: none;
+    border-radius: 0.25rem;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .professional-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-/* Card Image */
 .professional-card .card-img-top {
-    height: 200px;
+    height: 220px;
     object-fit: cover;
-    border-bottom: 1px solid #DDDDDD;
+    transition: transform 0.3s ease;
+}
+
+.professional-card:hover .card-img-top {
+    transform: scale(1.02);
+}
+
+/* Card Body */
+.professional-card .card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
 }
 
 /* Card Title */
 .card-title a {
     color: #000;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
     transition: color 0.3s ease, border-bottom 0.3s ease;
     border-bottom: 2px solid transparent;
 }
@@ -54,16 +138,19 @@
 
 /* Card Text */
 .card-text {
-    color: #555555;
-    font-size: 16px;
+    color: #555;
+    font-size: 1rem;
+    margin-top: 0.75rem;
     line-height: 1.6;
+    flex: 1 1 auto;
 }
 
 /* Read More Button */
 .btn-outline-danger {
     border-color: #FF0000;
     color: #FF0000;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .btn-outline-danger:hover {
@@ -71,10 +158,35 @@
     color: #fff;
 }
 
-/* Pagination */
+/* ---------------------------------- */
+/* Card Footer                        */
+/* ---------------------------------- */
+
+.card-footer {
+    background-color: #fff;
+    border-top: none;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.card-footer .social-share a {
+    font-size: 1rem;
+    margin-right: 8px;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.card-footer .social-share a:hover {
+    color: #FF0000;
+}
+
+/* ---------------------------------- */
+/* Pagination                         */
+/* ---------------------------------- */
+
 .pagination .page-link {
-    color: #000;
-    border: 1px solid #DDDDDD;
+    color: #333;
+    border: 1px solid #DDD;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -89,72 +201,30 @@
     color: #000;
 }
 
-/* Text Colors */
-.text-black {
-    color: #000;
+/* ---------------------------------- */
+/* Responsive Adjustments             */
+/* ---------------------------------- */
+
+@media (max-width: 992px) {
+    #blog-hero h1 {
+        font-size: 3rem;
+    }
 }
 
-.text-darkgrey {
-    color: #555555;
-}
-
-.text-red {
-    color: #FF0000;
-}
-
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     #blog-hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
     }
 
     .professional-card .card-img-top {
-        height: 150px;
+        height: 180px;
     }
 
     .card-text {
-        font-size: 14px;
+        font-size: 0.95rem;
     }
 
     .pagination .page-link {
         padding: 0.5rem 0.75rem;
     }
-}
-
-/* Additional Styling */
-
-/* Remove default link underlines */
-a.text-decoration-none {
-    text-decoration: none;
-}
-
-a.text-decoration-none:hover {
-    text-decoration: none;
-}
-
-/* Footer Styling */
-.card-footer {
-    font-size: 0.9rem;
-}
-
-/* Button Icon Alignment */
-.btn-outline-danger i {
-    margin-left: 5px;
-    vertical-align: middle;
-}
-
-/* Hero Section Icon Styling */
-#blog-hero .bi {
-    font-size: 1.5rem;
-    margin-right: 5px;
-}
-
-/* Social Share Icons */
-.social-share a {
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-}
-
-.social-share a:hover {
-    color: #FF0000;
 }

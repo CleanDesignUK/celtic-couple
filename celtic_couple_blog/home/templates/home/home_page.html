@@ -7,102 +7,427 @@
 {% block meta_keywords %}Celtic, Travel, Blog, Heritage, Culture{% endblock %}
 
 {% block extra_css %}
-
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<style>/* home.css */
+   :root {
+    --primary-color: #4B0D0D; /* Deep Maroon */
+    --secondary-color: #FFFFFF; /* White */
+    --hover-color: #DCCCE8; /* Light Maroon */
+    --accent-color: #DCCCE8; /* For hover and accents */
+    --ko-fi-color: #DCCCE8; /* Light Purple for Ko-fi button */
+}
+
+    /* Red Background with White Text */
+    .red-section {
+        background-color: var(--primary-color) !important;
+        color: var(--secondary-color) !important;
+    }
+    
+    /* Off-White Background with Black Text */
+    .offwhite-section {
+        background-color: #f8f9fa !important; /* Assuming off-white as #f8f9fa */
+        color: var(--primary-color) !important;
+    }
+    
+    /* Section Titles */
+    .section-title {
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: inherit !important; /* Inherits color from parent section */
+    }
+    
+    /* Hero Banner Specific Styles */
+    .hero-banner {
+        background: url("{% static 'images/hero_placeholder.jpg' %}") no-repeat center center/cover;
+        position: relative;
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hero-banner::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero-banner .container {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .hero-banner h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+    }
+    
+    .hero-banner p {
+        font-size: 24px;
+        margin-bottom: 30px;
+        letter-spacing: 0.3px;
+    }
+    
+    .hero-banner .btn-primary {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+    
+    /* Top Blog Post Specific Styles */
+    .top-blog-post .card {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .top-blog-post .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .top-blog-post .card-img-top {
+        height: 300px;
+        object-fit: cover;
+    }
+    
+    .top-blog-post .card-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .top-blog-post .card-text {
+        font-size: 16px;
+        color: #555 !important;
+    }
+    
+    .top-blog-post .btn-primary {
+        background-color: var(--primary-color) !important;
+        border: none;
+    }
+    
+    .top-blog-post .btn-primary:hover {
+        background-color: var(--accent-color) !important;
+    }
+    
+    /* General Blog Link Specific Styles */
+    .general-blog-link {
+        background-color: var(--primary-color) !important;
+        color: var(--secondary-color) !important;
+    }
+    
+    .general-blog-link h2 {
+        color: var(--secondary-color) !important;
+    }
+    
+    .general-blog-link .btn-secondary {
+        background-color: transparent;
+        color: var(--secondary-color) !important;
+        border: 2px solid var(--secondary-color) !important;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .general-blog-link .btn-secondary:hover {
+        background-color: var(--accent-color) !important;
+        color: var(--secondary-color) !important;
+        border-color: var(--accent-color) !important;
+    }
+    
+    /* Image Gallery Section Specific Styles */
+    .image-gallery img {
+        border-radius: 8px;
+    }
+    
+    .image-gallery .carousel-inner img {
+        height: 300px;
+        object-fit: cover;
+    }
+    
+    .image-gallery .carousel-control-prev-icon,
+    .image-gallery .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+    }
+    
+    /* Masonry Layout for Large Screens */
+    @media (min-width: 992px) {
+        .gallery-masonry .masonry {
+            column-count: 3;
+            column-gap: 15px;
+        }
+    
+        .gallery-masonry .masonry img {
+            width: 100%;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .hero-banner {
+            height: 60vh;
+        }
+    
+        .hero-banner h1 {
+            font-size: 36px;
+        }
+    
+        .hero-banner p {
+            font-size: 18px;
+        }
+    
+        .top-blog-post .card-img-top {
+            height: 250px;
+        }
+    
+        .image-gallery .carousel-inner img {
+            height: 250px;
+        }
+    
+        .image-gallery .carousel-control-prev-icon,
+        .image-gallery .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    }
+    
+    /* About Us Specific Styles */
+    .about-us h3 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    
+    .about-us p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .about-us .btn-secondary {
+        background-color: transparent;
+        color: var(--secondary-color) !important;
+        border: 2px solid var(--secondary-color) !important;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .about-us .btn-secondary:hover {
+        background-color: var(--accent-color) !important;
+        color: var(--secondary-color) !important;
+        border-color: var(--accent-color) !important;
+    }
+    
+    /* Contact Section Specific Styles */
+    .contact h3 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    
+    .contact p {
+        font-size: 16px;
+        color: #333 !important;
+        margin-bottom: 20px;
+    }
+    
+    .contact ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .contact ul li {
+        font-size: 16px;
+        color: #333 !important;
+        margin-bottom: 10px;
+    }
+    
+    .contact ul li a {
+        color: var(--primary-color) !important;
+    }
+    
+    .contact .btn-danger {
+        background-color: var(--primary-color) !important;
+        color: var(--secondary-color) !important;
+        border: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .contact .btn-danger:hover {
+        background-color: var(--accent-color) !important;
+        color: var(--secondary-color) !important;
+    }
+    
+    /* Work With Us Specific Styles */
+    .work-with-us h3 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    
+    .work-with-us p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .work-with-us .btn-secondary {
+        background-color: transparent;
+        color: var(--secondary-color) !important;
+        border: 2px solid var(--secondary-color) !important;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .work-with-us .btn-secondary:hover {
+        background-color: var(--accent-color) !important;
+        color: var(--secondary-color) !important;
+        border-color: var(--accent-color) !important;
+    }
+    </style>
 <!-- Hero Banner -->
-<section id="hero-banner" class="text-center text-white">
+<section id="hero-banner" class="hero-banner red-section text-center">
     <div class="container d-flex flex-column justify-content-center align-items-center h-100">
-        <h1 class="display-4 text-center">Adventure Awaits</h1>
+        <h1 class="display-4">Adventure Awaits</h1>
         <p class="lead">Join us as we explore the world and celebrate our Celtic heritage.</p>
         <a href="/cms/blog/" class="btn btn-primary">Read Our Blog</a>
     </div>
 </section>
 
-<!-- Intro Sections -->
-<section id="intros" class="py-5">
+<!-- Top Blog Post -->
+<section id="top-blog-post" class="top-blog-post offwhite-section py-5">
     <div class="container">
-        <div class="row">
-
-            <!-- About Us -->
-            <div class="col-md-6 mb-4">
-                <div class="intro-card">
-                    <img src="{% static 'images/about_placeholder.jpg' %}" alt="About Us" class="intro-image">
-                    <div class="intro-content">
-                        <h3>About Us</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
-                        pulvinar facilisis justo mollis, auctor consequat urna.</p>
-                        <a href="{% url 'about' %}" class="btn btn-secondary">Learn More</a>
+        <h2 class="section-title text-center mb-4">Featured Blog Post</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <img src="{% static 'images/top_blog_placeholder.jpg' %}" class="card-img-top" alt="Top Blog Post">
+                    <div class="card-body">
+                        <h3 class="card-title">Exciting Adventures in the Highlands</h3>
+                        <p class="card-text">Discover the breathtaking landscapes and rich culture of the Scottish Highlands in our latest blog post.</p>
+                        <a href="/cms/blog/exciting-adventures-in-the-highlands/" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Work With Us -->
-            <div class="col-md-6 mb-4">
-                <div class="intro-card">
-                    <img src="{% static 'images/work_placeholder.jpg' %}" alt="Work With Us" class="intro-image">
-                    <div class="intro-content">
-                        <h3>Work With Us</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
-                        pulvinar facilisis justo mollis, auctor consequat urna.</p>
-                        <a href="{% url 'work_with_us' %}" class="btn btn-secondary">Get Involved</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact -->
-            <div class="col-md-6 mb-4">
-                <div class="intro-card">
-                    <img src="{% static 'images/contact_placeholder.jpg' %}" alt="Contact" class="intro-image">
-                    <div class="intro-content">
-                        <h3>Contact</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
-                        pulvinar facilisis justo mollis, auctor consequat urna.</p>
-                        <a href="{% url 'contact' %}" class="btn btn-secondary">Contact Us</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Blog -->
-            <div class="col-md-6 mb-4">
-                <div class="intro-card">
-                    <img src="{% static 'images/blog_placeholder.jpg' %}" alt="Blog" class="intro-image">
-                    <div class="intro-content">
-                        <h3>Blog</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
-                        pulvinar facilisis justo mollis, auctor consequat urna.</p>
-                        <a href="/cms/blog/" class="btn btn-primary">Read Our Blog</a>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
 
-<!-- Latest Blog Posts -->
-<section id="latest-blog" class="py-5 bg-light">
+<!-- Link to General Blog Page -->
+<section id="general-blog-link" class="general-blog-link red-section text-center py-5">
     <div class="container">
-        <h2 class="text-center mb-4">Latest Blog Posts</h2>
-        <div class="row">
-            {% for post in latest_posts %}
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <img src="{{ post.thumbnail.url }}" class="card-img-top" alt="{{ post.title }}">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text">{{ post.excerpt }}</p>
-                        <a href="/cms/blog/{{ post.slug }}/" class="mt-auto btn btn-primary">Read More</a> <!-- Updated Link -->
+        <h2 class="section-title mb-4">Explore More Stories</h2>
+        <a href="/cms/blog/" class="btn btn-secondary btn-lg">Visit Our Blog</a>
+    </div>
+</section>
+
+<!-- Image Gallery Section -->
+<section id="image-gallery" class="image-gallery offwhite-section py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-4">Our Journeys</h2>
+        <!-- Carousel for Small and Medium Screens -->
+        <div class="gallery-carousel d-lg-none">
+            <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'images/gallery_placeholder1.jpg' %}" class="d-block w-100" alt="Gallery Image 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'images/gallery_placeholder2.jpg' %}" class="d-block w-100" alt="Gallery Image 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'images/gallery_placeholder3.jpg' %}" class="d-block w-100" alt="Gallery Image 3">
                     </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            {% endfor %}
         </div>
-        <div class="text-center">
-            <a href="/cms/blog/" class="btn btn-secondary">View All Posts</a> <!-- Updated Link -->
+        <!-- Masonry Layout for Large Screens -->
+        <div class="gallery-masonry d-none d-lg-block">
+            <div class="row g-3 masonry">
+                <div class="col-md-4">
+                    <img src="{% static 'images/gallery_placeholder1.jpg' %}" class="img-fluid" alt="Gallery Image 1">
+                </div>
+                <div class="col-md-4">
+                    <img src="{% static 'images/gallery_placeholder2.jpg' %}" class="img-fluid" alt="Gallery Image 2">
+                </div>
+                <div class="col-md-4">
+                    <img src="{% static 'images/gallery_placeholder3.jpg' %}" class="img-fluid" alt="Gallery Image 3">
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'images/gallery_placeholder4.jpg' %}" class="img-fluid" alt="Gallery Image 4">
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'images/gallery_placeholder5.jpg' %}" class="img-fluid" alt="Gallery Image 5">
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+<!-- About Us Section -->
+<section id="about-us" class="about-us red-section py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-4">About Us</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <img src="{% static 'images/about_placeholder.jpg' %}" alt="About Us" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <h3>Our Story</h3>
+                <p>We are Dave and Georgina Roberts who live near the outskirts of Snowdonia National Park in North West Wales. I was raised in the royal town of Caernarfon in Gwynedd, and Georgina was raised in Cornwall – both Celtic state counties.</p>
+                <p>We first met in 2007 in a café. We had a coffee and got to know each other, then departed and got into our cars and drove away. The next day, I was driving to visit friends in Gloucester. I was on the overtaking lane on the M56 and noticed a Renault Kangoo that looked similar to the one I saw in the café. Unbeknownst to me, I looked at the driver and it was Georgina. We both looked at each other, and I pointed at her, gesturing, "Go and park in the next layby." When I stopped, the first thing I said to her was, "Oh my God, I can't believe this."</p>
+                <p>From that moment, the rest is history!</p>
+                <p>Since then, our lifestyle has been geared around walking and cycling in the local countryside and traveling in our beloved Volkswagen campervan to various places in Europe and the islands of Scotland, such as the Outer Hebrides, Orkney, and Shetland.</p>
+                <p>We hope you enjoy following our journeys around the UK and Europe.</p>
+                <a href="{% url 'about' %}" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact offwhite-section py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-4">Get in Touch</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4 order-md-2">
+                <img src="{% static 'images/contact_placeholder.jpg' %}" alt="Contact" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6 order-md-1">
+                <h3>Contact Us</h3>
+                <p>Have questions or want to collaborate? We'd love to hear from you! Reach out to us through any of the following methods.</p>
+                <ul class="list-unstyled">
+                    <li>Email: <a href="mailto:info@thecelticcouple.com" class="text-danger">info@thecelticcouple.com</a></li>
+                    <li>Phone: <a href="tel:+1234567890" class="text-danger">+1 (234) 567-890</a></li>
+                </ul>
+                <a href="{% url 'contact' %}" class="btn btn-danger">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Work With Us Section -->
+<section id="work-with-us" class="work-with-us red-section py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-4">Join Our Team</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <img src="{% static 'images/work_placeholder.jpg' %}" alt="Work With Us" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <h3>Work With Us</h3>
+                <p>Are you passionate about travel, culture, and storytelling? We'd love to have you on board! Whether you're interested in contributing to our blog, helping with our adventures, or collaborating on exciting projects, there's a place for you in our journey.</p>
+                <a href="{% url 'work_with_us' %}" class="btn btn-secondary">Get Involved</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
