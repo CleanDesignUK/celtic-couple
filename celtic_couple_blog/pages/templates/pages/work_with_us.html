@@ -120,6 +120,7 @@
             margin: 5px;
         }
     }
+    .image-styling {max-height:400px;}
 </style>
 {% endblock extra_css %}
 
@@ -132,7 +133,7 @@
         <p class="mb-4">
             At The Celtic Couple, we believe in creating authentic connections through travel. If you’re a brand, fellow traveller, or supporter with ideas on how to enhance our journeys, we’d love to hear from you!
         </p>
-        <img src="{% static 'images/work_intro.jpg' %}" alt="Work With Us Intro" class="img-fluid mb-4">
+     
         <p>
             From recommending scenic routes and local festivals to offering collaboration opportunities and travel gear, your involvement makes our adventures more meaningful. Let’s celebrate culture, heritage, and a passion for exploring the unknown—together!
         </p>
@@ -145,7 +146,7 @@
         <h2 class="text-center mb-5">Collaboration & Community</h2>
         <div class="row align-items-center">
             <div class="col-md-6 mb-4">
-                <img src="{% static 'images/work_collab.jpg' %}" alt="Collaboration" class="img-fluid">
+                <img src="{% static 'images/collab.jpg' %}" alt="Collaboration" class="img-fluid">
             </div>
             <div class="col-md-6">
                 <p>We’re open to working with brands that share our love for road trips, Celtic heritage, and immersive cultural experiences. If you can provide gear, resources, or exclusive deals that enrich our excursions, let’s partner up!</p>
@@ -216,12 +217,10 @@
         <h2 class="mb-4">Our Partners</h2>
         <p>We appreciate the support of these fantastic brands and organisations, helping us stay equipped and inspired on every trip.</p>
         <div class="brand-logos">
-            <a href="https://examplebrand.com" target="_blank">
-                <img src="/" alt="Brand 1">
+            <a href="https://cleandesignuk.com" target="_blank">
+                <img src="{% static 'images/logo-cleandesign.jpg' %}" alt="Brand 1">
             </a>
-            <a href="https://anotherbrand.co.uk" target="_blank">
-                <img src="/" alt="Brand 2">
-            </a>
+         
         </div>
     </div>
 </section>
