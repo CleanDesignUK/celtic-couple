@@ -2,74 +2,254 @@
 {% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block title %}{{ page.title }} - The Celtic Couple{% endblock %}
-
 {% block meta_description %}{{ page.intro|truncatechars:160 }}{% endblock %}
 {% block meta_keywords %}Blog, {{ page.title }}, Celtic, Travel, Heritage{% endblock %}
 
+{% block extra_css %}
+<style>
+/* ==============================
+   ENHANCED BLOG PAGE STYLES
+   ============================== */
+
+/* 1. Importing Three Distinct Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+/* 2. Colour Variables */
+:root {
+  --primary-color: #4B0D0D;   /* Deep Maroon */
+  --secondary-color: #FFFFFF; /* White */
+  --accent-color: #DCCCE8;    /* Light Maroon for accents */
+  --offwhite-color: #f8f9fa;  /* Off-white */
+  --text-color: #333333;      /* Dark Text */
+  --caption-color: #555555;   /* Caption Text */
+}
+
+/* 3. Body Defaults */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--offwhite-color);
+  font-family: 'Montserrat', sans-serif; /* Main body font */
+  color: var(--text-color);
+}
+
+/* 4. Hero Section (Minimal Maroon) */
+.blog-hero {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+}
+.blog-hero h1 {
+  font-family: 'Playfair Display', serif; /* Font #1 */
+  font-size: 3rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* 5. Section Titles */
+.images-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+}
+
+/* 6. Image Gallery Styles */
+.images-section {
+  padding: 60px 20px;
+  background-color: var(--offwhite-color);
+}
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+.images-grid figure {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+.images-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.images-grid figure:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+}
+.images-grid figcaption {
+  position: absolute;
+  bottom: 0;
+  background: rgba(75,13,13,0.7); /* Semi-transparent maroon */
+  color: var(--secondary-color);
+  width: 100%;
+  padding: 10px;
+  font-family: 'Lora', serif; /* Font #2 */
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.images-grid figure:hover figcaption {
+  opacity: 1;
+}
+
+/* 7. Main Content Section */
+.section-offwhite {
+  padding: 60px 20px;
+  background-color: var(--offwhite-color);
+}
+.post-date {
+  font-family: 'Lora', serif; /* Font #2 */
+  font-size: 0.95rem;
+  color: #999999;
+  margin-bottom: 15px;
+}
+.subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin: 20px 0;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+}
+.blog-content {
+  font-family: 'Montserrat', sans-serif; /* Font #3 */
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+.blog-content a {
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.3s;
+}
+.blog-content a:hover {
+  border-bottom: 1px solid var(--accent-color);
+}
+.blog-content blockquote {
+  border-left: 4px solid var(--accent-color);
+  padding-left: 15px;
+  background-color: #fff;
+  font-style: italic;
+  margin: 25px 0;
+  color: var(--text-color);
+  font-family: 'Lora', serif;
+}
+
+/* 8. Responsive Design */
+@media (max-width: 768px) {
+  .blog-hero {
+    padding: 60px 10px;
+  }
+  .blog-hero h1 {
+    font-size: 2.5rem;
+  }
+  .images-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  .section-offwhite {
+    padding: 40px 10px;
+  }
+  .subtitle {
+    font-size: 1.5rem;
+  }
+  .blog-content {
+    font-size: 1rem;
+  }
+}
+</style>
+{% endblock extra_css %}
+
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/blog-page.css' %}">
-<section id="blog-detail" class="py-5 bg-white">
-    <div class="container">
-        <!-- Post Header -->
-        <header class="mb-4">
-            <h1 class="display-4 text-black">{{ page.title }}</h1>
-            <p class="text-muted">
-                Posted by 
-                {% if page.author %}
-                    {{ page.author.name }}
-                {% else %}
-                    Unknown
-                {% endif %}
-                on {{ page.date|date:"F d, Y" }}
-            </p>
-        </header>
-        
-        <!-- Intro -->
-        <div class="mb-4">
-            <p class="lead text-darkgrey">{{ page.intro }}</p>
-        </div>
-        
-        <!-- Gallery Images -->
-        {% if page.gallery_images.all %}
-            <div class="gallery mb-5">
-                <div class="row">
-                    {% for gallery_image in page.gallery_images.all %}
-                        <div class="col-md-4 mb-4">
-                            <a href="{{ gallery_image.image.url }}" data-lightbox="blog-gallery" data-title="{{ gallery_image.caption }}">
-                                {% image gallery_image.image fill-800x600 as rendition %}
-                                <img src="{{ rendition.url }}" alt="{{ gallery_image.caption }}" class="img-fluid rounded shadow-sm" loading="lazy">
-                            </a>
-                            {% if gallery_image.caption %}
-                                <p class="text-center text-muted mt-2">{{ gallery_image.caption }}</p>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
-        
-        <!-- Blog Body -->
-        <div class="blog-body">
-            {{ page.body|richtext }}
-        </div>
-        
-        <!-- Share Icons -->
-        <div class="share-icons my-4">
-            <span>Share:</span>
-            <a href="#" class="text-red mx-2" aria-label="Share on Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="text-red mx-2" aria-label="Share on Twitter">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="text-red mx-2" aria-label="Share on Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <!-- Add more share icons as needed -->
-        </div>
-        
-        <!-- Back to Blog Index -->
-        <a href="{% pageurl page.get_parent %}" class="btn btn-secondary mt-3">Back to Blog</a>
-    </div>
+
+<!-- 1. Hero Section: Blog Title -->
+<section class="blog-hero">
+  <h1>{{ page.title }}</h1>
 </section>
+
+<!-- 2. Image Gallery: First Look -->
+{% with all_images=page.gallery_images.all %}
+{% with total_images=all_images|length %}
+
+{% if total_images > 0 %}
+  {% with first_chunk=all_images|slice:":2" %}
+  <section class="images-section">
+    <div class="container">
+      <h2 class="images-title">First Look</h2>
+      <div class="images-grid">
+        {% for gal_img in first_chunk %}
+        <figure>
+          {% image gal_img.image fill-800x600 as rendition %}
+          <img src="{{ rendition.url }}"
+               alt="{{ gal_img.caption|default_if_none:'Blog Image' }}"
+               loading="lazy">
+          {% if gal_img.caption %}
+          <figcaption>{{ gal_img.caption }}</figcaption>
+          {% endif %}
+        </figure>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endwith %}
+{% endif %}
+
+<!-- 3. Main Content: Date, Subtitle, Blog Text -->
+<section class="section-offwhite">
+  <div class="container">
+    {% if page.date %}
+      <p class="post-date">{{ page.date|date:"d F Y" }}</p>
+    {% endif %}
+    {% if page.subtitle %}
+      <h2 class="subtitle">{{ page.subtitle }}</h2>
+    {% endif %}
+
+    <div class="blog-content">
+      {{ page.body|richtext }}
+    </div>
+  </div>
+</section>
+
+<!-- 4. Additional Image Gallery: Additional Scenes -->
+{% if total_images > 2 %}
+  {% with second_chunk=all_images|slice:"2:" %}
+  {% if second_chunk|length > 0 %}
+  <section class="images-section">
+    <div class="container">
+      <h2 class="images-title">Additional Scenes</h2>
+      <div class="images-grid">
+        {% for gal_img in second_chunk %}
+        <figure>
+          {% image gal_img.image fill-800x600 as rendition %}
+          <img src="{{ rendition.url }}"
+               alt="{{ gal_img.caption|default_if_none:'Blog Image' }}"
+               loading="lazy">
+          {% if gal_img.caption %}
+          <figcaption>{{ gal_img.caption }}</figcaption>
+          {% endif %}
+        </figure>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  {% endwith %}
+{% endif %}
+
+{% endwith %}
+{% endwith %}
+
 {% endblock %}
