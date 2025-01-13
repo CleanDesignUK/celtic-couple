@@ -41,7 +41,7 @@
 
     /* Hero Banner Specific Styles */
     .hero-banner {
-        background: url("{% static 'images/hero_placeholder.jpg' %}") no-repeat center center/cover;
+        background: url("{% static 'images/herohome.jpg' %}") no-repeat center center/cover;
         position: relative;
         height: 80vh;
         display: flex;
@@ -103,7 +103,7 @@
     }
 
     .top-blog-post .card-img-top {
-        height: 300px;
+        height: 400px;
         object-fit: cover;
     }
 
@@ -290,6 +290,8 @@
         color: var(--secondary-color) !important;
         border-color: var(--accent-color) !important;
     }
+
+    .image-styling {height:400px;}
 </style>
 {% endblock extra_css %}
 
@@ -310,13 +312,13 @@
        
         {% if featured_post %}
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-8 col-lg-6">
                     <div class="card mb-4">
                         <!-- Featured Image -->
                         {% if featured_post.gallery_images.first %}
                             <!-- If you’re using Wagtail’s image renditions -->
                             {% image featured_post.gallery_images.first.image fill-800x600 as rendition %}
-                            <img src="{{ rendition.url }}" class="card-img-top" alt="{{ featured_post.title }}">
+                            <img src="{{ rendition.url }}" class="card-img-top " alt="{{ featured_post.title }}">
                         {% else %}
                             <!-- Fallback if no gallery image -->
                             <img src="{% static 'images/top_blog_placeholder.jpg' %}"
@@ -407,7 +409,7 @@
         <h2 class="section-title text-center mb-4">About Us</h2>
         <div class="row align-items-center">
             <div class="col-md-6 mb-4">
-                <img src="{% static 'images/about_placeholder.jpg' %}" alt="About Us" class="img-fluid rounded">
+                <img src="{% static 'images/about-us-home.jpg' %}" alt="About Us" class="img-fluid rounded">
             </div>
             <div class="col-md-6">
                 <h3>Our Story</h3>
@@ -428,7 +430,7 @@
         <h2 class="section-title text-center mb-4">Get in Touch</h2>
         <div class="row align-items-center">
             <div class="col-md-6 mb-4 order-md-2">
-                <img src="{% static 'images/contact_placeholder.jpg' %}" alt="Contact" class="img-fluid rounded">
+                <img src="{% static 'images/contact-us-home.jpg' %}" alt="Contact" class="img-fluid rounded">
             </div>
             <div class="col-md-6 order-md-1">
                 <h3>Contact Us</h3>
@@ -449,7 +451,7 @@
         <h2 class="section-title text-center mb-4">Join Our Team</h2>
         <div class="row align-items-center">
             <div class="col-md-6 mb-4">
-                <img src="{% static 'images/work_placeholder.jpg' %}" alt="Work With Us" class="img-fluid rounded">
+                <img src="{% static 'images/work-with-us-home.jpg' %}" alt="Work With Us" class="img-fluid rounded">
             </div>
             <div class="col-md-6">
                 <h3>Work With Us</h3>
