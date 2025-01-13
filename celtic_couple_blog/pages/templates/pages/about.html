@@ -100,6 +100,7 @@
             font-size: 22px;
         }
     }
+    .img-gallery {height:400px;}
 </style>
 {% endblock extra_css %}
 
@@ -117,7 +118,7 @@
         </p>
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <img src="{% static 'images/about_introduction.jpg' %}" class="img-fluid" alt="Dave and Georgina Introduction">
+                <img src="{% static 'images/about-intro.jpg' %}" class="img-fluid" alt="Dave and Georgina Introduction">
             </div>
         </div>
     </div>
@@ -138,7 +139,7 @@
                 </div>
             </div>
             <div class="col-md-6 text-center">
-                <img src="{% static 'images/about_section2.jpg' %}" alt="Our Journey Start" class="img-fluid">
+                <img src="{% static 'images/chance-encounter.jpg' %}" alt="Our Journey Start" class="img-fluid">
             </div>
         </div>
     </div>
@@ -148,7 +149,7 @@
 <section class="red-section pb-5">
     <div class="container">
         <h2 class="section-title">Moments on the Road</h2>
-        <p class="mb-4">
+        <p class="mb-4 text-center">
             Have a peek at some of our favourite memories, from classic coastal drives to quirky ports and epic events. 
         </p>
 
@@ -160,14 +161,14 @@
 
         <!-- Example Gallery -->
         <div class="row">
-            <div class="col-md-4">
-                <img src="{% static 'images/about_gallery1.jpg' %}" class="img-fluid" alt="Campervan Trip 1">
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <img src="{% static 'images/journey-about-1.jpg' %}" class="img-fluid img-gallery" alt="Campervan Trip 1">
             </div>
-            <div class="col-md-4">
-                <img src="{% static 'images/about_gallery2.jpg' %}" class="img-fluid" alt="Coastal Scenic View">
+            <div class="col-md-4 d-flex justify-content-center align-items-center ">
+                <img src="{% static 'images/journey-about-2.jpg' %}" class="img-fluid img-gallery" alt="Coastal Scenic View">
             </div>
-            <div class="col-md-4">
-                <img src="{% static 'images/about_gallery3.jpg' %}" class="img-fluid" alt="Local Festival">
+            <div class="col-md-4 d-flex justify-content-center align-items-center ">
+                <img src="{% static 'images/journey-about-3.jpg' %}" class="img-fluid img-gallery " alt="Local Festival">
             </div>
         </div>
     </div>
@@ -179,7 +180,7 @@
         <h2 class="section-title">Celebrating Celtic Heritage</h2>
         <div class="row align-items-center">
             <div class="col-md-6 order-md-2">
-                <img src="{% static 'images/about_section4.jpg' %}" alt="Celtic Heritage" class="img-fluid">
+                <img src="{% static 'images/welsh-cornish.jpg' %}" alt="Celtic Heritage" class="img-fluid">
             </div>
             <div class="col-md-6 order-md-1">
                 <h3 class="section-heading">Proudly Welsh & Cornish</h3>
