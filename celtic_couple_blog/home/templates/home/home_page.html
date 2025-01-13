@@ -365,13 +365,13 @@
                 <div class="carousel-inner">
                     <!-- Replace dynamic loop with static images -->
                     <div class="carousel-item active">
-                        <img src="path-to-your-image1.jpg" class="d-block w-100" alt="Caption for Image 1">
+                        <img src="{% static 'images/s-10.jpg' %}" class="d-block w-100" alt="Caption for Image 1">
                     </div>
                     <div class="carousel-item">
-                        <img src="path-to-your-image2.jpg" class="d-block w-100" alt="Caption for Image 2">
+                        <img src="{% static 'images/o-1.jpg' %}" class="d-block w-100" alt="Caption for Image 2">
                     </div>
                     <div class="carousel-item">
-                        <img src="path-to-your-image3.jpg" class="d-block w-100" alt="Caption for Image 3">
+                        <img src="{% static 'images/s-5.jpg' %}" class="d-block w-100" alt="Caption for Image 3">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
@@ -386,16 +386,16 @@
         </div>
         <!-- Masonry Layout for Large Screens -->
         <div class="gallery-masonry d-none d-lg-block">
-            <div class="row g-3 masonry">
+            <div class="row g-0 ">
                 <!-- Replace dynamic loop with static images -->
-                <div class="col-md-4">
-                    <img src="path-to-your-image1.jpg" class="img-fluid" alt="Caption for Image 1">
+                <div class="col-md-4 p-1">
+                    <img src="{% static 'images/s-10.jpg' %}" class="img-fluid" alt="Caption for Image 1">
                 </div>
-                <div class="col-md-4">
-                    <img src="path-to-your-image2.jpg" class="img-fluid" alt="Caption for Image 2">
+                <div class="col-md-4 p-1">
+                    <img src="{% static 'images/o-1.jpg' %}" class="img-fluid" alt="Caption for Image 2">
                 </div>
-                <div class="col-md-4">
-                    <img src="path-to-your-image3.jpg" class="img-fluid" alt="Caption for Image 3">
+                <div class="col-md-4 p-1 ">
+                    <img src="{% static 'images/s-5.jpg' %}" class="img-fluid" alt="Caption for Image 3">
                 </div>
             </div>
         </div>
@@ -448,7 +448,7 @@
 <!-- Work With Us Section -->
 <section id="work-with-us" class="work-with-us red-section py-5">
     <div class="container">
-        <h2 class="section-title text-center mb-4">Join Our Team</h2>
+        <h2 class="section-title text-center mb-4">Join the community</h2>
         <div class="row align-items-center">
             <div class="col-md-6 mb-4">
                 <img src="{% static 'images/work-with-us-home.jpg' %}" alt="Work With Us" class="img-fluid rounded">
