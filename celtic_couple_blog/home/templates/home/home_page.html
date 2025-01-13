@@ -353,6 +353,7 @@
 </section>
 
 <!-- Image Gallery Section -->
+<!-- Image Gallery Section -->
 <section id="image-gallery" class="image-gallery offwhite-section py-5">
     <div class="container">
         <h2 class="section-title text-center mb-4">Our Journeys</h2>
@@ -360,11 +361,16 @@
         <div class="gallery-carousel d-lg-none">
             <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    {% for image in featured_post.gallery_images.all %}
-                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                            <img src="{% image image.image fill-800x600 %}" class="d-block w-100" alt="{{ image.caption }}">
-                        </div>
-                    {% endfor %}
+                    <!-- Replace dynamic loop with static images -->
+                    <div class="carousel-item active">
+                        <img src="path-to-your-image1.jpg" class="d-block w-100" alt="Caption for Image 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="path-to-your-image2.jpg" class="d-block w-100" alt="Caption for Image 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="path-to-your-image3.jpg" class="d-block w-100" alt="Caption for Image 3">
+                    </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -379,15 +385,21 @@
         <!-- Masonry Layout for Large Screens -->
         <div class="gallery-masonry d-none d-lg-block">
             <div class="row g-3 masonry">
-                {% for image in featured_post.gallery_images.all %}
-                    <div class="col-md-4">
-                        <img src="{% image image.image fill-600x400 %}" class="img-fluid" alt="{{ image.caption }}">
-                    </div>
-                {% endfor %}
+                <!-- Replace dynamic loop with static images -->
+                <div class="col-md-4">
+                    <img src="path-to-your-image1.jpg" class="img-fluid" alt="Caption for Image 1">
+                </div>
+                <div class="col-md-4">
+                    <img src="path-to-your-image2.jpg" class="img-fluid" alt="Caption for Image 2">
+                </div>
+                <div class="col-md-4">
+                    <img src="path-to-your-image3.jpg" class="img-fluid" alt="Caption for Image 3">
+                </div>
             </div>
         </div>
     </div>
 </section>
+
 
 <!-- About Us Section -->
 <section id="about-us" class="about-us red-section py-5">
