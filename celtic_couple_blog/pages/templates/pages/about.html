@@ -1,21 +1,87 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block title %}About Us - The Celtic Couple{% endblock %}
 
 {% block meta_description %}Learn more about The Celtic Couple, our mission, and our journey celebrating Celtic heritage through travel and culture.{% endblock %}
 {% block meta_keywords %}About, Celtic Couple, Heritage, Travel, Culture{% endblock %}
 
+{% block extra_css %}
+<style>
+    /* about.css */
+    :root {
+        --primary-color: #4B0D0D; /* Deep Maroon */
+        --secondary-color: #FFFFFF; /* White */
+        --hover-color: #DCCCE8; /* Light Maroon */
+        --accent-color: #DCCCE8; /* For hover and accents */
+        --ko-fi-color: #DCCCE8; /* Light Purple for Ko-fi button */
+    }
+
+    /* About Section Styles */
+    #about {
+        background-color: #f8f9fa;
+        color: var(--primary-color);
+    }
+
+    .about-section {
+        padding: 60px 0;
+    }
+
+    .about-section img {
+        border-radius: 8px;
+    }
+
+    .about-section h1 {
+        font-size: 36px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .about-section h3 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .about-section p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .about-section h1 {
+            font-size: 28px;
+        }
+
+        .about-section h3 {
+            font-size: 24px;
+        }
+
+        .about-section p {
+            font-size: 16px;
+        }
+    }
+</style>
+{% endblock extra_css %}
+
 {% block content %}
-<section id="about" class="py-5">
+<section id="about" class="about-section py-5">
     <div class="container">
-        <h1 class="mb-4">About Us</h1>
-        <div class="row">
-            <div class="col-md-6">
-                <img src="{% static 'images/about_placeholder.jpg' %}" alt="About The Celtic Couple" class="img-fluid mb-4">
+        <h1>About Us</h1>
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <img src="{% static 'images/about_us.jpg' %}" alt="Dave and Georgina Roberts" class="img-fluid">
             </div>
             <div class="col-md-6">
-                <p>We are a couple passionate about exploring Celtic heritage and sharing our adventures with the world. Our journey began when...</p>
+                <h3>Hello and Welcome!</h3>
+                <p>We are Dave and Georgina Roberts, a passionate couple dedicated to exploring and celebrating our Celtic heritage through travel. Living near the picturesque Snowdonia National Park in North West Wales, our surroundings inspire our adventures and fuel our desire to discover new places.</p>
+                <p>Dave, working diligently in the hospital, brings a sense of care and dedication not only to his profession but also to our shared journeys. Proudly Welsh, his love for our rich cultural traditions and stunning landscapes shines through in every trip we undertake.</p>
+                <p>Georgina, with her roots in Cornwall—a region steeped in its own unique Celtic history—complements Dave's passion with her flair for storytelling and capturing memorable moments. Together, we aim to share photos and videos from our travels, providing a glimpse into the diverse experiences we encounter.</p>
+                <p>Our blog focuses on documenting road trips in our Volkswagen campervan, highlighting annual journeys across the UK and Europe. From navigating charming ports and exploring historical landmarks to attending vibrant events and enjoying scenic drives, our stories are a testament to our love for adventure and discovery.</p>
+                <p>Inspired by platforms like <a href="http://www.adventurewheels.co.uk" target="_blank">Adventure Wheels</a>, our travel blog is a labour of love. We share our experiences not for commercial gain but to inspire and connect with fellow travel enthusiasts who appreciate the beauty of road trips and the richness of Celtic culture.</p>
+                <p>Join us as we continue to explore new horizons, embrace different cultures, and create lasting memories on the road.</p>
+                <p class="text-end">Dave and Georgina Roberts x</p>
             </div>
         </div>
     </div>

@@ -1,23 +1,173 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block title %}Work With Us - The Celtic Couple{% endblock %}
 
-{% block meta_description %}Discover collaboration opportunities with The Celtic Couple to celebrate and preserve Celtic heritage.{% endblock %}
-{% block meta_keywords %}Work With Us, Collaboration, Partnership, Celtic Heritage, The Celtic Couple{% endblock %}
+{% block meta_description %}Join The Celtic Couple in our adventures! Share your recommendations, experiences, and collaborate with us to enhance our travel journeys.{% endblock %}
+{% block meta_keywords %}Work With Us, Collaborate, Recommendations, Travel, Celtic Couple{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* work_with_us.css */
+    :root {
+        --primary-color: #4B0D0D; /* Deep Maroon */
+        --secondary-color: #FFFFFF; /* White */
+        --hover-color: #DCCCE8; /* Light Maroon */
+        --accent-color: #DCCCE8; /* For hover and accents */
+        --ko-fi-color: #DCCCE8; /* Light Purple for Ko-fi button */
+    }
+
+    /* Work With Us Section Styles */
+    #work-with-us {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+
+    .work-with-us-section {
+        padding: 60px 0;
+    }
+
+    .work-with-us-section img {
+        border-radius: 8px;
+    }
+
+    .work-with-us-section h1 {
+        font-size: 36px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .work-with-us-section h3 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .work-with-us-section p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    /* Button Styles */
+    .btn-custom-secondary {
+        background-color: transparent;
+        color: var(--secondary-color) !important;
+        border: 2px solid var(--secondary-color) !important;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+
+    .btn-custom-secondary:hover {
+        background-color: var(--accent-color) !important;
+        color: var(--secondary-color) !important;
+        border-color: var(--accent-color) !important;
+    }
+
+    /* Testimonials Styles */
+    .testimonials {
+        margin-top: 40px;
+    }
+
+    .testimonial {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .testimonial p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .testimonial .author {
+        font-weight: 700;
+        margin-top: 10px;
+    }
+
+    /* Brands Section */
+    .brands {
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .brands img {
+        max-height: 60px;
+        margin: 10px;
+        filter: brightness(0) invert(1); /* To ensure visibility on maroon background */
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .work-with-us-section h1 {
+            font-size: 28px;
+        }
+
+        .work-with-us-section h3 {
+            font-size: 24px;
+        }
+
+        .work-with-us-section p {
+            font-size: 16px;
+        }
+
+        .brands img {
+            max-height: 50px;
+            margin: 5px;
+        }
+    }
+</style>
+{% endblock extra_css %}
 
 {% block content %}
-<section id="work-with-us" class="py-5">
+<section id="work-with-us" class="work-with-us-section">
     <div class="container">
-        <h1 class="mb-4">Work With Us</h1>
-        <div class="row">
-            <div class="col-md-6">
-                <img src="{% static 'images/work_placeholder.jpg' %}" alt="Work With The Celtic Couple" class="img-fluid mb-4">
+        <h1>Work With Us</h1>
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <img src="{% static 'images/work_with_us.jpg' %}" alt="Work With Us" class="img-fluid">
             </div>
             <div class="col-md-6">
-                <p>Interested in collaborating with us? We'd love to hear from you!</p>
-                <a href="{% url 'contact' %}" class="btn btn-secondary mt-3">Get in Touch</a>
+                <h3>Collaborate and Share</h3>
+                <p>At The Celtic Couple, we believe in the power of community and collaboration. If you've enjoyed following our road trips and have valuable insights, recommendations, or experiences to share, we'd love to hear from you!</p>
+                <p>Whether it's suggesting must-visit places, sharing memorable moments from our journeys, or recommending brands that can enhance our adventures with quality gear, your input helps us create a richer travel experience.</p>
+                <p>We're also open to collaborations with brands interested in partnering with us. If you can provide travel essentials at reduced rates or have products that align with our journey, let's work together to make our travels even more enjoyable.</p>
+                <p>Join us in documenting and celebrating our road trips across the UK and Europe. Your contributions can help us and others discover new destinations and create unforgettable memories.</p>
+                <a href="" class="btn btn-custom-secondary">Get Involved</a>
             </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="testimonials">
+            <h3 class="section-title text-center mb-4">What Our Community Says</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="testimonial">
+                        <p>"The Celtic Couple's journey through the Outer Hebrides was nothing short of magical. Their recommendations for hidden gems are spot on!"</p>
+                        <div class="author">– Sarah L.</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="testimonial">
+                        <p>"Thanks to Dave and Georgina, I discovered some fantastic coastal routes in Cornwall. Their travel tips are incredibly helpful."</p>
+                        <div class="author">– Mark T.</div>
+                    </div>
+                </div>
+                <!-- Add more testimonials as needed -->
+            </div>
+        </div>
+
+        <!-- Brands Section -->
+        <div class="brands">
+            <h3 class="section-title mb-4">Our Partners</h3>
+            <a href="https://examplebrand.com" target="_blank">
+                <img src="{% static 'images/brand1_logo.png' %}" alt="Brand 1">
+            </a>
+            <a href="https://anotherbrand.co.uk" target="_blank">
+                <img src="{% static 'images/brand2_logo.png' %}" alt="Brand 2">
+            </a>
+            <!-- Add more brand logos as needed -->
         </div>
     </div>
 </section>

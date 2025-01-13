@@ -1,40 +1,141 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block title %}Contact Us - The Celtic Couple{% endblock %}
 
 {% block meta_description %}Get in touch with The Celtic Couple for inquiries, collaborations, and more.{% endblock %}
 {% block meta_keywords %}Contact, Inquiries, Collaborations, The Celtic Couple{% endblock %}
 
+{% block extra_css %}
+<style>
+    /* contact.css */
+    :root {
+        --primary-color: #4B0D0D; /* Deep Maroon */
+        --secondary-color: #FFFFFF; /* White */
+        --hover-color: #DCCCE8; /* Light Maroon */
+        --accent-color: #DCCCE8; /* For hover and accents */
+        --ko-fi-color: #DCCCE8; /* Light Purple for Ko-fi button */
+    }
+
+    /* Contact Section Styles */
+    #contact {
+        background-color: #f8f9fa;
+        color: var(--primary-color);
+    }
+
+    .contact-section {
+        padding: 60px 0;
+    }
+
+    .contact-section img {
+        border-radius: 8px;
+    }
+
+    .contact-section h1 {
+        font-size: 36px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .contact-section h3 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .contact-section p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    /* Button Styles */
+    .btn-custom-danger {
+        background-color: var(--primary-color) !important;
+        color: var(--secondary-color) !important;
+        border: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+
+    .btn-custom-danger:hover {
+        background-color: var(--accent-color) !important;
+        color: var(--secondary-color) !important;
+    }
+
+    /* Form Styles */
+    .contact-form {
+        margin-top: 30px;
+    }
+
+    .contact-form label {
+        font-weight: 500;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .contact-section h1 {
+            font-size: 28px;
+        }
+
+        .contact-section h3 {
+            font-size: 24px;
+        }
+
+        .contact-section p {
+            font-size: 16px;
+        }
+
+        .contact-form button {
+            font-size: 16px;
+            padding: 8px 16px;
+        }
+    }
+</style>
+{% endblock extra_css %}
+
 {% block content %}
-<section id="contact" class="py-5 bg-light">
+<section id="contact" class="contact-section py-5">
     <div class="container">
-        <h1 class="mb-4">Contact Us</h1>
-        <div class="row">
-            <div class="col-md-6">
-                <img src="{% static 'images/contact_placeholder.jpg' %}" alt="Contact The Celtic Couple" class="img-fluid mb-4">
+        <h1>Contact Us</h1>
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <img src="{% static 'images/contact_us.jpg' %}" alt="Contact The Celtic Couple" class="img-fluid">
             </div>
             <div class="col-md-6">
-                <p>If you have any questions, collaborations, or just want to say hello, feel free to reach out!</p>
-                <!-- Contact Form -->
-                <form action="https://web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </form>
+                <h3>Get in Touch</h3>
+                <p>Whether you have questions, suggestions, or would like to collaborate, we're here to listen and engage. Reach out to us through any of the methods below, and we'll get back to you as soon as possible.</p>
+                <ul class="list-unstyled">
+                    <li><strong>Email:</strong> <a href="mailto:info@thecelticcouple.com" class="text-danger">info@thecelticcouple.com</a></li>
+                    <li><strong>Phone:</strong> <a href="tel:+1234567890" class="text-danger">+1 (234) 567-890</a></li>
+                </ul>
+                <a href="" class="btn btn-custom-danger">Contact Us</a>
             </div>
         </div>
+
+        <!-- Optional: Contact Form Section -->
+        <!-- Uncomment and customise if you wish to include a contact form directly on the page -->
+        {# 
+        <div class="contact-form">
+            <h3>Send Us a Message</h3>
+            <form action="https://web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-custom-danger">Send</button>
+            </form>
+        </div>
+        #}
     </div>
 </section>
 {% endblock %}
