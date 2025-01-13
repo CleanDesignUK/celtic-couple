@@ -9,95 +9,196 @@
 
 {% block extra_css %}
 <style>
-/* ==============================
-   ALBUM PAGE STYLES - SHETLAND 2024
-   ============================== */
+    /* ==============================
+       ALBUM PAGE STYLES - SHETLAND 2024
+       ============================== */
 
-/* 1. Colour Variables */
-:root {
-  --primary-color: #4B0D0D;   /* Deep Maroon */
-  --secondary-color: #FFFFFF; /* White */
-  --accent-color: #DCCCE8;    /* Light Maroon for accents */
-  --offwhite-color: #f8f9fa;  /* Off-white */
-  --text-color: #333333;      /* Dark Text */
-  --caption-color: #555555;   /* Caption Text */
-}
+    /* 1. Colour Variables */
+    :root {
+      --primary-color: #4B0D0D;   /* Deep Maroon */
+      --secondary-color: #FFFFFF; /* White */
+      --accent-color: #DCCCE8;    /* Light Maroon for accents */
+      --offwhite-color: #f8f9fa;  /* Off-white */
+      --text-color: #333333;      /* Dark Text */
+      --caption-color: #555555;   /* Caption Text */
+      --button-spacing: 10px;     /* Spacing between buttons */
+    }
 
-/* 2. Body Defaults */
-body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--offwhite-color);
-  font-family: 'Montserrat', sans-serif; /* Main body font */
-  color: var(--text-color);
-}
+    /* 2. Box Sizing */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-/* 3. Album Section */
-.album-section {
-  padding: 60px 20px;
-  background-color: var(--offwhite-color);
-}
+    /* 3. Body Defaults */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--offwhite-color);
+      font-family: 'Montserrat', sans-serif; /* Main body font */
+      color: var(--text-color);
+    }
 
-/* 4. Album Intro */
-.album-intro {
-  max-width: 800px;
-  margin: 0 auto 40px;
-  font-family: 'Lora', serif;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  text-align: center;
-  color: var(--text-color);
-}
+    /* 4. Album Section */
+    .album-section {
+      padding: 60px 20px;
+      background-color: var(--offwhite-color);
+      position: relative; /* To contain fixed buttons */
+    }
 
-/* 5. Masonry Gallery */
-.masonry-gallery {
-  column-count: 3;
-  column-gap: 20px;
-}
+    /* 5. Album Intro */
+    .album-intro {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: center;
+      color: var(--text-color);
+    }
 
-.masonry-gallery img {
-  width: 100%;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  break-inside: avoid;
-}
+    /* 6. Section Title */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--primary-color);
+      letter-spacing: 1px;
+    }
 
-.masonry-gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-}
+    /* 7. Masonry Gallery using CSS Columns */
+    .masonry-gallery {
+      column-count: 3;
+      column-gap: 20px;
+    }
 
-/* 6. Responsive Design */
-@media (max-width: 1200px) {
-  .masonry-gallery {
-    column-count: 2;
-  }
-}
+    /* 8. Responsive Adjustments */
+    @media (max-width: 992px) { /* Tablet */
+      .masonry-gallery {
+        column-count: 2;
+      }
+    }
 
-@media (max-width: 768px) {
-  .masonry-gallery {
-    column-count: 1;
-  }
+    @media (max-width: 576px) { /* Mobile */
+      .masonry-gallery {
+        column-count: 1;
+      }
 
-  .album-intro {
-    font-size: 1rem;
-    padding: 0 10px;
-  }
-}
+      .album-intro {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+      }
+    }
+
+    /* 9. Gallery Items */
+    .masonry-gallery img {
+      width: 100%;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      break-inside: avoid;
+      display: block;
+      object-fit: cover;
+      height: auto;
+    }
+
+    /* 10. Hover Effect */
+    .masonry-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+    }
+
+    /* 11. Ensuring Images Do Not Overflow */
+    .container {
+      overflow: hidden;
+      padding: 0 15px; /* Bootstrap container padding */
+    }
+
+    /* 12. Additional Styling for Accessibility */
+    .masonry-gallery img:focus {
+      outline: 2px solid var(--primary-color);
+    }
+
+    /* 13. Preventing Image Overflow */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 14. Navigation Buttons */
+    .fixed-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--button-spacing);
+      z-index: 1000; /* Ensure buttons are above other elements */
+    }
+
+    .fixed-buttons a,
+    .fixed-buttons button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    /* Back to Gallery Button */
+    .btn-back-gallery {
+      background-color: var(--primary-color); /* Deep Maroon */
+      color: var(--secondary-color); /* White */
+      border: none;
+    }
+
+    .btn-back-gallery:hover,
+    .btn-back-gallery:focus {
+      background-color: #3A0A0A; /* Darker Maroon on hover/focus */
+    }
+
+    /* Back to Top Button */
+    .btn-back-top {
+      background-color: transparent;
+      color: var(--primary-color); /* Deep Maroon */
+      border: 2px solid var(--primary-color);
+    }
+
+    .btn-back-top:hover,
+    .btn-back-top:focus {
+      background-color: var(--primary-color); /* Deep Maroon */
+      color: var(--secondary-color); /* White */
+    }
+
+    /* Utility: Smooth Scroll Behavior */
+    html {
+      scroll-behavior: smooth;
+    }
 </style>
 {% endblock extra_css %}
 
 {% block content %}
 
 <!-- Album Page Section -->
-<section class="album-section">
+<section class="album-section" id="top">
     <div class="container">
         <h2 class="section-title text-center mb-4">Shetland 2024 Road Trip</h2>
         <p class="album-intro">
             Our Shetland 2024 Road Trip was an unforgettable journey through the rugged landscapes and serene beauty of the Shetland Islands. From breathtaking sunsets to charming coastal villages, each moment was a testament to the natural splendor and rich cultural heritage of this enchanting region.
         </p>
         <div class="masonry-gallery">
+            <!-- Gallery Images -->
             <img src="{% static 'gallery/images/sh-1.jpg' %}" alt="Shetland 2024 Image 1" loading="lazy">
             <img src="{% static 'gallery/images/sh-2.jpg' %}" alt="Shetland 2024 Image 2" loading="lazy">
             <img src="{% static 'gallery/images/sh-3.jpg' %}" alt="Shetland 2024 Image 3" loading="lazy">
@@ -125,7 +226,7 @@ body {
             <img src="{% static 'gallery/images/sh-25.jpg' %}" alt="Shetland 2024 Image 25" loading="lazy">
             <img src="{% static 'gallery/images/sh-26.jpg' %}" alt="Shetland 2024 Image 26" loading="lazy">
             <img src="{% static 'gallery/images/sh-27.jpg' %}" alt="Shetland 2024 Image 27" loading="lazy">
-            <img src="{% static 'gallery/images/sh-28.jpg' %}" alt="Shetland 2024 Image 28" loading="lazy">
+           
             <img src="{% static 'gallery/images/sh-29.jpg' %}" alt="Shetland 2024 Image 29" loading="lazy">
             <img src="{% static 'gallery/images/sh-30.jpg' %}" alt="Shetland 2024 Image 30" loading="lazy">
             <img src="{% static 'gallery/images/sh-31.jpg' %}" alt="Shetland 2024 Image 31" loading="lazy">
@@ -137,5 +238,13 @@ body {
         </div>
     </div>
 </section>
+
+<!-- Fixed Navigation Buttons -->
+<div class="fixed-buttons">
+    <!-- Back to Gallery Button -->
+    <a href="{% url 'gallery:gallery' %}" class="btn-back-gallery">Back to Gallery</a>
+    <!-- Back to Top Button -->
+    <button type="button" class="btn-back-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">Back to Top</button>
+</div>
 
 {% endblock %}
