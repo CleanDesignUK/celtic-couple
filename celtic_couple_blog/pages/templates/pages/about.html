@@ -3,87 +3,208 @@
 
 {% block title %}About Us - The Celtic Couple{% endblock %}
 
-{% block meta_description %}Learn more about The Celtic Couple, our mission, and our journey celebrating Celtic heritage through travel and culture.{% endblock %}
-{% block meta_keywords %}About, Celtic Couple, Heritage, Travel, Culture{% endblock %}
+{% block meta_description %}Discover more about The Celtic Couple, our Celtic heritage, and our passion for travelling around the UK and Europe in our campervan.{% endblock %}
+{% block meta_keywords %}About, Celtic Couple, Heritage, Travel, Campervan, Culture{% endblock %}
 
 {% block extra_css %}
 <style>
-    /* about.css */
+    /* Inline CSS for the About Page */
+
     :root {
-        --primary-color: #4B0D0D; /* Deep Maroon */
+        --primary-color: #4B0D0D;  /* Deep Maroon */
         --secondary-color: #FFFFFF; /* White */
-        --hover-color: #DCCCE8; /* Light Maroon */
-        --accent-color: #DCCCE8; /* For hover and accents */
-        --ko-fi-color: #DCCCE8; /* Light Purple for Ko-fi button */
+        --hover-color: #DCCCE8;     /* Light Maroon */
+        --accent-color: #DCCCE8;    /* For hover and accents */
+        --offwhite-color: #f8f9fa;  /* Off-white background */
     }
 
-    /* About Section Styles */
-    #about {
-        background-color: #f8f9fa;
-        color: var(--primary-color);
-    }
-
-    .about-section {
-        padding: 60px 0;
-    }
-
-    .about-section img {
-        border-radius: 8px;
-    }
-
-    .about-section h1 {
-        font-size: 36px;
+    /* ========== Shared Utilities ========== */
+    .section-title {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 32px;
         margin-bottom: 30px;
         text-align: center;
     }
-
-    .about-section h3 {
-        font-size: 28px;
-        margin-bottom: 15px;
+    .icon-text {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .icon-text i {
+        font-size: 24px;
+        color: var(--accent-color);
     }
 
-    .about-section p {
-        font-size: 18px;
-        line-height: 1.6;
+    /* ========== Colour Sections ========== */
+    .red-section {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 60px 0;
+    }
+    .offwhite-section {
+        background-color: var(--offwhite-color);
+        color: var(--primary-color);
+        padding: 60px 0;
+    }
+
+    /* ========== Section Headings ========== */
+    .section-heading {
+        font-size: 28px;
         margin-bottom: 20px;
+        text-transform: uppercase;
+        color: inherit;
+        letter-spacing: 0.5px;
+    }
+
+    /* ========== Images & Video ========== */
+    .img-fluid {
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 ratio */
+        margin-bottom: 20px;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 8px;
+    }
+
+    /* ========== Additional Spacing ========== */
+    .mb-4 {
+        margin-bottom: 1.5rem !important;
+    }
+    .mb-5 {
+        margin-bottom: 3rem !important;
+    }
+    .pb-5 {
+        padding-bottom: 3rem !important;
     }
 
     /* Responsive Adjustments */
     @media (max-width: 768px) {
-        .about-section h1 {
-            font-size: 28px;
+        .section-title {
+            font-size: 26px;
         }
-
-        .about-section h3 {
-            font-size: 24px;
-        }
-
-        .about-section p {
-            font-size: 16px;
+        .section-heading {
+            font-size: 22px;
         }
     }
 </style>
 {% endblock extra_css %}
 
 {% block content %}
-<section id="about" class="about-section py-5">
+
+<!-- SECTION 1: Introduction (Red Background, White Text) -->
+<section class="red-section text-center">
     <div class="container">
-        <h1>About Us</h1>
-        <div class="row align-items-center">
-            <div class="col-md-6 mb-4">
-                <img src="{% static 'images/about_us.jpg' %}" alt="Dave and Georgina Roberts" class="img-fluid">
-            </div>
+        <h2 class="section-title">Welcome to Our World</h2>
+        <p class="mb-4">
+            We are Dave and Georgina Roberts, living near the outskirts of Snowdonia National Park in North West Wales. By day, Dave works in the hospital, proudly serving the local community, while Georgina is an avid creative, capturing life’s best moments on camera. Our shared passion for travel, Celtic heritage, and exploring new places inspired us to start this blog.
+        </p>
+        <p class="mb-4">
+            From scenic countryside walks to big city excursions, we hope our adventures spark your curiosity and encourage you to pack your bags for your own unforgettable journey.
+        </p>
+        <div class="row justify-content-center">
             <div class="col-md-6">
-                <h3>Hello and Welcome!</h3>
-                <p>We are Dave and Georgina Roberts, a passionate couple dedicated to exploring and celebrating our Celtic heritage through travel. Living near the picturesque Snowdonia National Park in North West Wales, our surroundings inspire our adventures and fuel our desire to discover new places.</p>
-                <p>Dave, working diligently in the hospital, brings a sense of care and dedication not only to his profession but also to our shared journeys. Proudly Welsh, his love for our rich cultural traditions and stunning landscapes shines through in every trip we undertake.</p>
-                <p>Georgina, with her roots in Cornwall—a region steeped in its own unique Celtic history—complements Dave's passion with her flair for storytelling and capturing memorable moments. Together, we aim to share photos and videos from our travels, providing a glimpse into the diverse experiences we encounter.</p>
-                <p>Our blog focuses on documenting road trips in our Volkswagen campervan, highlighting annual journeys across the UK and Europe. From navigating charming ports and exploring historical landmarks to attending vibrant events and enjoying scenic drives, our stories are a testament to our love for adventure and discovery.</p>
-                <p>Inspired by platforms like <a href="http://www.adventurewheels.co.uk" target="_blank">Adventure Wheels</a>, our travel blog is a labour of love. We share our experiences not for commercial gain but to inspire and connect with fellow travel enthusiasts who appreciate the beauty of road trips and the richness of Celtic culture.</p>
-                <p>Join us as we continue to explore new horizons, embrace different cultures, and create lasting memories on the road.</p>
-                <p class="text-end">Dave and Georgina Roberts x</p>
+                <img src="{% static 'images/about_introduction.jpg' %}" class="img-fluid" alt="Dave and Georgina Introduction">
             </div>
         </div>
+    </div>
+</section>
+
+<!-- SECTION 2: Our Background (Off-White Background, Maroon Text) -->
+<section class="offwhite-section">
+    <div class="container">
+        <h2 class="section-title">Our Story</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h3 class="section-heading">A Chance Encounter</h3>
+                <p>We first met in 2007 in a café, chatted over a cup of coffee, then went our separate ways—only to meet again the very next day on the M56! We both recognised each other, pulled over into the next layby, and that was the magical start of our story. From that point on, life has been one scenic ride after another.</p>
+                <p>Since that moment, we’ve geared our lifestyle around cycling, walking, and travelling—mostly in our beloved Volkswagen campervan. Together, we’ve visited various corners of Europe and many islands of Scotland, including the Outer Hebrides, Orkney, and Shetland, all while diving headfirst into local cultures and breathtaking natural beauty.</p>
+                <div class="icon-text">
+                    <i class="bi bi-heart-fill"></i>
+                    <span>Happily sharing our adventures since 2007</span>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="{% static 'images/about_section2.jpg' %}" alt="Our Journey Start" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 3: Gallery/Video (Red Background, White Text) -->
+<section class="red-section pb-5">
+    <div class="container">
+        <h2 class="section-title">Moments on the Road</h2>
+        <p class="mb-4">
+            Have a peek at some of our favourite memories, from classic coastal drives to quirky ports and epic events. 
+        </p>
+
+        <!-- Optional Video Placeholder -->
+        <div class="video-container">
+            <!-- Replace with your own YouTube/Vimeo embed link -->
+            <iframe src="https://www.youtube.com/embed/XXXXXXXXX" allowfullscreen></iframe>
+        </div>
+
+        <!-- Example Gallery -->
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static 'images/about_gallery1.jpg' %}" class="img-fluid" alt="Campervan Trip 1">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/about_gallery2.jpg' %}" class="img-fluid" alt="Coastal Scenic View">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/about_gallery3.jpg' %}" class="img-fluid" alt="Local Festival">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 4: Celtic Heritage & Future Plans (Off-White Background, Maroon Text) -->
+<section class="offwhite-section">
+    <div class="container">
+        <h2 class="section-title">Celebrating Celtic Heritage</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6 order-md-2">
+                <img src="{% static 'images/about_section4.jpg' %}" alt="Celtic Heritage" class="img-fluid">
+            </div>
+            <div class="col-md-6 order-md-1">
+                <h3 class="section-heading">Proudly Welsh & Cornish</h3>
+                <p>Dave’s Welsh background and Georgina’s Cornish roots create a unique blend of Celtic traditions. We find joy in discovering historical landmarks, connecting with local cultures, and indulging in local delicacies—like a hearty Welsh rarebit or a traditional Cornish pasty.</p>
+                <p>Every year, we set out to uncover new routes, ports, boat events, car shows, and festivals, all while taking in the wonderful sights, sounds, and tastes along the way.</p>
+                <div class="icon-text">
+                    <i class="bi bi-flag-fill"></i>
+                    <span>Sharing Celtic pride wherever we go</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 5: Conclusion (Red Background, White Text) -->
+<section class="red-section text-center">
+    <div class="container">
+        <h2 class="section-title">Join Us on This Journey</h2>
+        <p class="mb-5">
+            We invite you to explore our blog and follow our adventures around the UK and Europe. 
+            From rugged coastlines to hidden countryside paths, each trip is a chance to discover 
+            something new about the world—and ourselves.
+        </p>
+        <h3 class="mb-4">Dave and Georgina Roberts x</h3>
+        <i class="bi bi-camera-fill" style="font-size: 40px;"></i>
     </div>
 </section>
 {% endblock %}
