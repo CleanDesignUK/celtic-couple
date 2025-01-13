@@ -1,0 +1,185 @@
+<!-- gallery/templates/gallery/gallery.html -->
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Gallery - The Celtic Couple{% endblock %}
+{% block meta_description %}Explore our unforgettable journeys across Shetland, Orkney, Normandy, and more.{% endblock %}
+{% block meta_keywords %}Gallery, Shetland 2024, Orkney 2021, Shetland 2021, Normandy Beaches 2023, Celtic Travel{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ==============================
+   GALLERY PAGE STYLES
+   ============================== */
+
+/* 1. Importing Three Distinct Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+/* 2. Colour Variables */
+:root {
+  --primary-color: #4B0D0D;   /* Deep Maroon */
+  --secondary-color: #FFFFFF; /* White */
+  --accent-color: #DCCCE8;    /* Light Maroon for accents */
+  --offwhite-color: #f8f9fa;  /* Off-white */
+  --text-color: #333333;      /* Dark Text */
+  --caption-color: #555555;   /* Caption Text */
+}
+
+/* 3. Body Defaults */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--offwhite-color);
+  font-family: 'Montserrat', sans-serif; /* Main body font */
+  color: var(--text-color);
+}
+
+/* 4. Gallery Section */
+.image-gallery {
+  padding: 60px 20px;
+  background-color: var(--offwhite-color);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+}
+
+/* 5. Gallery Cards */
+.gallery-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.gallery-card {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* Enforce square aspect ratio */
+  aspect-ratio: 1 / 1;
+  
+  /* Fallback for older browsers */
+  /* Uncomment the following lines if needed
+  width: 100%;
+  padding-top: 100%; 
+  position: relative;
+  */
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  
+  /* Fallback for older browsers */
+  /* Uncomment the following lines if using padding-top fallback
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  */
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(75,13,13,0.6); /* Semi-transparent maroon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show overlay on hover for desktop */
+.gallery-card:hover .gallery-card-overlay {
+  opacity: 1;
+}
+
+/* Always show overlay on mobile */
+@media (max-width: 767.98px) {
+  .gallery-card-overlay {
+    opacity: 1;
+  }
+}
+
+.gallery-card-overlay h3 {
+  color: var(--secondary-color);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* 6. Responsive Design */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+}
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+
+<!-- Image Gallery Section -->
+<section id="image-gallery" class="image-gallery offwhite-section py-5">
+    <div class="container">
+        <h2 class="section-title">Our Journeys</h2>
+        <div class="gallery-cards">
+            <!-- Gallery Card 1 -->
+            <a href="{% url 'gallery:shetland_2024' %}" class="gallery-card">
+                <img src="{% static 'gallery/images/sh-24.jpg' %}" alt="Shetland 2024 Road Trip" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <h3>Shetland 2024 Road Trip</h3>
+                </div>
+            </a>
+            <!-- Gallery Card 2 -->
+            <a href="{% url 'gallery:orkney_2021' %}" class="gallery-card">
+                <img src="{% static 'gallery/images/o-1.jpg' %}" alt="Orkney 2021" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <h3>Orkney 2021</h3>
+                </div>
+            </a>
+            <!-- Gallery Card 3 -->
+            <a href="{% url 'gallery:shetland_2021' %}" class="gallery-card">
+                <img src="{% static 'gallery/images/s-1.jpg' %}" alt="Shetland 2021" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <h3>Shetland 2021</h3>
+                </div>
+            </a>
+            <!-- Gallery Card 4 -->
+            <a href="{% url 'gallery:normandy_beaches_2023' %}" class="gallery-card">
+                <img src="{% static 'gallery/images/n-7.jpg' %}" alt="Normandy Beaches 2023" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <h3>Normandy Beaches 2023</h3>
+                </div>
+            </a>
+            <!-- Add more gallery cards as needed -->
+        </div>
+    </div>
+</section>
+
+{% endblock %}

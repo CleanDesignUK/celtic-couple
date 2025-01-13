@@ -22,7 +22,7 @@ urlpatterns = [
 
     # Your custom home page at root
     path('', include('home.urls')),  # Serves '/' URL
-
+    path('gallery/', include('gallery.urls', namespace='gallery')),
     # Your custom pages (About, Contact, Work With Us, etc.)
     path('', include('pages.urls')),  # Serves '/about/', '/contact/', etc.
 

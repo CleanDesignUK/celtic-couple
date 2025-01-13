@@ -1,0 +1,134 @@
+<!-- gallery/templates/gallery/album_normandy_beaches_2023.html -->
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Normandy Beaches 2023 - Gallery - The Celtic Couple{% endblock %}
+{% block meta_description %}Discover our Normandy Beaches 2023 journey with stunning photographs and memorable experiences.{% endblock %}
+{% block meta_keywords %}Normandy Beaches 2023, Gallery, Celtic Travel{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ==============================
+   ALBUM PAGE STYLES - NORMANDY BEACHES 2023
+   ============================== */
+
+/* 1. Colour Variables */
+:root {
+  --primary-color: #4B0D0D;   /* Deep Maroon */
+  --secondary-color: #FFFFFF; /* White */
+  --accent-color: #DCCCE8;    /* Light Maroon for accents */
+  --offwhite-color: #f8f9fa;  /* Off-white */
+  --text-color: #333333;      /* Dark Text */
+  --caption-color: #555555;   /* Caption Text */
+}
+
+/* 2. Body Defaults */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--offwhite-color);
+  font-family: 'Montserrat', sans-serif; /* Main body font */
+  color: var(--text-color);
+}
+
+/* 3. Album Section */
+.album-section {
+  padding: 60px 20px;
+  background-color: var(--offwhite-color);
+}
+
+/* 4. Album Intro */
+.album-intro {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: center;
+  color: var(--text-color);
+}
+
+/* 5. Masonry Gallery */
+.masonry-gallery {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+.masonry-gallery img {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  break-inside: avoid;
+}
+
+.masonry-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+}
+
+/* 6. Responsive Design */
+@media (max-width: 1200px) {
+  .masonry-gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .masonry-gallery {
+    column-count: 1;
+  }
+
+  .album-intro {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+}
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+
+<!-- Album Page Section -->
+<section class="album-section">
+    <div class="container">
+        <h2 class="section-title text-center mb-4">Normandy Beaches 2023</h2>
+        <p class="album-intro">
+            Our Normandy Beaches 2023 expedition was a poignant journey through history and natural beauty. Walking along the iconic shores, we reflected on the past while marveling at the serene landscapes and vibrant local culture that make Normandy a unique destination.
+        </p>
+        <div class="masonry-gallery">
+            <img src="{% static 'gallery/images/n-1.jpg' %}" alt="Normandy Beaches 2023 Image 1" loading="lazy">
+            <img src="{% static 'gallery/images/n-2.jpg' %}" alt="Normandy Beaches 2023 Image 2" loading="lazy">
+            <img src="{% static 'gallery/images/n-3.jpg' %}" alt="Normandy Beaches 2023 Image 3" loading="lazy">
+            <img src="{% static 'gallery/images/n-4.jpg' %}" alt="Normandy Beaches 2023 Image 4" loading="lazy">
+            <img src="{% static 'gallery/images/n-5.jpg' %}" alt="Normandy Beaches 2023 Image 5" loading="lazy">
+            <img src="{% static 'gallery/images/n-6.jpg' %}" alt="Normandy Beaches 2023 Image 6" loading="lazy">
+            <img src="{% static 'gallery/images/n-7.jpg' %}" alt="Normandy Beaches 2023 Image 7" loading="lazy">
+            <img src="{% static 'gallery/images/s-7.jpg' %}" alt="Normandy Beaches 2023 Image 7" loading="lazy">
+            <img src="{% static 'gallery/images/s-8.jpg' %}" alt="Normandy Beaches 2023 Image 8" loading="lazy">
+            <img src="{% static 'gallery/images/s-9.jpg' %}" alt="Normandy Beaches 2023 Image 9" loading="lazy">
+            <img src="{% static 'gallery/images/s-10.jpg' %}" alt="Normandy Beaches 2023 Image 10" loading="lazy">
+            <img src="{% static 'gallery/images/s-11.jpg' %}" alt="Normandy Beaches 2023 Image 11" loading="lazy">
+            <img src="{% static 'gallery/images/s-12.jpg' %}" alt="Normandy Beaches 2023 Image 12" loading="lazy">
+            <img src="{% static 'gallery/images/s-13.jpg' %}" alt="Normandy Beaches 2023 Image 13" loading="lazy">
+            <img src="{% static 'gallery/images/s-14.jpg' %}" alt="Normandy Beaches 2023 Image 14" loading="lazy">
+            <img src="{% static 'gallery/images/s-15.jpg' %}" alt="Normandy Beaches 2023 Image 15" loading="lazy">
+            <img src="{% static 'gallery/images/s-16.jpg' %}" alt="Normandy Beaches 2023 Image 16" loading="lazy">
+            <img src="{% static 'gallery/images/s-17.jpg' %}" alt="Normandy Beaches 2023 Image 17" loading="lazy">
+            <img src="{% static 'gallery/images/s-18.jpg' %}" alt="Normandy Beaches 2023 Image 18" loading="lazy">
+            <img src="{% static 'gallery/images/s-19.jpg' %}" alt="Normandy Beaches 2023 Image 19" loading="lazy">
+            <img src="{% static 'gallery/images/s-20.jpg' %}" alt="Normandy Beaches 2023 Image 20" loading="lazy">
+            <img src="{% static 'gallery/images/s-21.jpg' %}" alt="Normandy Beaches 2023 Image 21" loading="lazy">
+            <img src="{% static 'gallery/images/s-22.jpg' %}" alt="Normandy Beaches 2023 Image 22" loading="lazy">
+            <img src="{% static 'gallery/images/s-23.jpg' %}" alt="Normandy Beaches 2023 Image 23" loading="lazy">
+            <img src="{% static 'gallery/images/s-24.jpg' %}" alt="Normandy Beaches 2023 Image 24" loading="lazy">
+            <img src="{% static 'gallery/images/s-25.jpg' %}" alt="Normandy Beaches 2023 Image 25" loading="lazy">
+            <img src="{% static 'gallery/images/s-26.jpg' %}" alt="Normandy Beaches 2023 Image 26" loading="lazy">
+            <img src="{% static 'gallery/images/s-27.jpg' %}" alt="Normandy Beaches 2023 Image 27" loading="lazy">
+            
+        </div>
+    </div>
+</section>
+
+{% endblock %}

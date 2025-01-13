@@ -1,0 +1,116 @@
+<!-- gallery/templates/gallery/album_orkney_2021.html -->
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Orkney 2021 - Gallery - The Celtic Couple{% endblock %}
+{% block meta_description %}Discover our Orkney 2021 adventures with stunning photographs and memorable experiences.{% endblock %}
+{% block meta_keywords %}Orkney 2021, Gallery, Celtic Travel{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ==============================
+   ALBUM PAGE STYLES - ORKNEY 2021
+   ============================== */
+
+/* 1. Colour Variables */
+:root {
+  --primary-color: #4B0D0D;   /* Deep Maroon */
+  --secondary-color: #FFFFFF; /* White */
+  --accent-color: #DCCCE8;    /* Light Maroon for accents */
+  --offwhite-color: #f8f9fa;  /* Off-white */
+  --text-color: #333333;      /* Dark Text */
+  --caption-color: #555555;   /* Caption Text */
+}
+
+/* 2. Body Defaults */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--offwhite-color);
+  font-family: 'Montserrat', sans-serif; /* Main body font */
+  color: var(--text-color);
+}
+
+/* 3. Album Section */
+.album-section {
+  padding: 60px 20px;
+  background-color: var(--offwhite-color);
+}
+
+/* 4. Album Intro */
+.album-intro {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: center;
+  color: var(--text-color);
+}
+
+/* 5. Masonry Gallery */
+.masonry-gallery {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+.masonry-gallery img {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  break-inside: avoid;
+}
+
+.masonry-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+}
+
+/* 6. Responsive Design */
+@media (max-width: 1200px) {
+  .masonry-gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .masonry-gallery {
+    column-count: 1;
+  }
+
+  .album-intro {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+}
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+
+<!-- Album Page Section -->
+<section class="album-section">
+    <div class="container">
+        <h2 class="section-title text-center mb-4">Orkney 2021</h2>
+        <p class="album-intro">
+            Our Orkney 2021 adventure took us deep into the heart of Scotland's northern archipelago. From ancient Neolithic sites to pristine beaches, each destination offered a unique glimpse into the rich history and natural beauty that defines Orkney.
+        </p>
+        <div class="masonry-gallery">
+            <img src="{% static 'gallery/images/o-1.jpg' %}" alt="Orkney 2021 Image 1" loading="lazy">
+            <img src="{% static 'gallery/images/o-2.jpg' %}" alt="Orkney 2021 Image 2" loading="lazy">
+            <img src="{% static 'gallery/images/o-3.jpg' %}" alt="Orkney 2021 Image 3" loading="lazy">
+            <img src="{% static 'gallery/images/o-4.jpg' %}" alt="Orkney 2021 Image 4" loading="lazy">
+            <img src="{% static 'gallery/images/o-5.jpg' %}" alt="Orkney 2021 Image 5" loading="lazy">
+            <img src="{% static 'gallery/images/o-6.jpg' %}" alt="Orkney 2021 Image 6" loading="lazy">
+            <img src="{% static 'gallery/images/o-7.jpg' %}" alt="Orkney 2021 Image 7" loading="lazy">
+            <img src="{% static 'gallery/images/o-8.jpg' %}" alt="Orkney 2021 Image 8" loading="lazy">
+            <img src="{% static 'gallery/images/o-9.jpg' %}" alt="Orkney 2021 Image 9" loading="lazy">
+            <img src="{% static 'gallery/images/o-10.jpg' %}" alt="Orkney 2021 Image 10" loading="lazy">
+            <img src="{% static 'gallery/images/o-11.jpg' %}" alt="Orkney 2021 Image 11" loading="lazy">
+        </div>
+    </div>
+</section>
+
+{% endblock %}
