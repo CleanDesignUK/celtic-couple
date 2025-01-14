@@ -1,4 +1,6 @@
 Django>=3.2,<4.0
-Wagtail>=2.15,<3.0
+Wagtail>=4
 psycopg2-binary==2.9.7  # Only required if using PostgreSQL
 gunicorn==20.1.0        # For production deployments
+whitenoise==6.4.0
+dj-database-url==0.5.0
