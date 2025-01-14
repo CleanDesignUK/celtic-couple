@@ -4,7 +4,7 @@ import dj_database_url
 
 # Whether Django is in debug mode
 # For production, generally set this to False
-DEBUG = False
+DEBUG = True
 
 # Secret key for production
 SECRET_KEY = 'q*d)3!g-59j1k118-b177mx4p1gdd152r2%#2f#3ss'
@@ -17,6 +17,15 @@ ALLOWED_HOSTS = [
     'glorious-space-guacamole-wrjj47wp97q35wp-8000.app.github.dev',
     'localhost',
 ]
+
+CSRF_TRUST_ORIGINS = [
+    'https://celtic-blog-10cb8fe7bf21.herokuapp.com',
+    'https://celticcouple.com',
+    'https://celticcouple.uk',
+    'https://glorious-space-guacamole-wrjj47wp97q35wp-8000.app.github.dev',
+    'http://localhost:8000'   # Add any other domains you might use
+]
+
 
 # Database configuration (using your Railway Postgres credentials)
 DATABASES = {
@@ -31,8 +40,8 @@ DATABASES = {
 }
 
 # Wagtail admin base URL
-WAGTAILADMIN_BASE_URL = 'https://celtic-blog-10cb8fe7bf21.herokuapp.com'
 
+WAGTAILADMIN_BASE_URL = 'https://celtic-blog-10cb8fe7bf21.herokuapp.com'
 # SSL and security settings
 SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
