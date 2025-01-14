@@ -58,7 +58,6 @@ class BlogPageGalleryImage(Orderable):  # Inherit from Orderable
 class BlogPage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
-    subtitle = models.CharField(max_length=250, blank=True, null=True)  # **New Subtitle Field**
     body = RichTextField(blank=True)
     author = models.ForeignKey(
         'blog.Author',
@@ -74,8 +73,7 @@ class BlogPage(Page):
             FieldPanel('date'),
             FieldPanel('author'),
         ], heading="Blog Details"),
-        FieldPanel('intro'),
-        FieldPanel('subtitle'),  # **Add Subtitle to Content Panels**
+        FieldPanel('intro'),  # **Add Subtitle to Content Panels**
         FieldPanel('body', classname="full"),
         FieldPanel('tags'),
         InlinePanel('gallery_images', label="Gallery Images"),
