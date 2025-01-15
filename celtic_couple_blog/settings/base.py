@@ -1,8 +1,10 @@
 import os
 from pathlib import Path
-
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale/'),
+]
 INSTALLED_APPS = [
     'home',
     'search',

@@ -1,20 +1,15 @@
-# blog/models.py
-
 from django.db import models
-from wagtail.models import Page
-from wagtail.admin.panels import (
-    FieldPanel,
-    InlinePanel,
-    MultiFieldPanel,
-)
+from wagtail.models import Page, Orderable
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField
 from wagtail.images.models import Image
 from wagtail.snippets.models import register_snippet
 from modelcluster.fields import ParentalKey
-from wagtail.models import Orderable  # Import Orderable
+
 
 @register_snippet
 class Author(models.Model):
+    """Snippet to represent blog authors."""
     name = models.CharField(max_length=100)
     bio = RichTextField(blank=True, null=True)
     photo = models.ForeignKey(
@@ -35,7 +30,8 @@ class Author(models.Model):
         return self.name
 
 
-class BlogPageGalleryImage(Orderable):  # Inherit from Orderable
+class BlogPageGalleryImage(Orderable):
+    """Allows for adding gallery images to a blog page."""
     page = ParentalKey('BlogPage', on_delete=models.CASCADE, related_name='gallery_images')
     image = models.ForeignKey(
         Image,
@@ -50,14 +46,16 @@ class BlogPageGalleryImage(Orderable):  # Inherit from Orderable
     ]
 
     class Meta:
-        ordering = ['sort_order']  # Ensure ordering by sort_order
+        ordering = ['sort_order']
         verbose_name = "Gallery Image"
         verbose_name_plural = "Gallery Images"
 
 
 class BlogPage(Page):
+    """Model for individual blog posts."""
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
+    subtitle = models.CharField(max_length=250, blank=True, null=True)
     body = RichTextField(blank=True)
     author = models.ForeignKey(
         'blog.Author',
@@ -66,14 +64,15 @@ class BlogPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    tags = models.CharField(max_length=250, blank=True)  # Consider using taggit for better tagging
+    tags = models.CharField(max_length=250, blank=True)
 
     content_panels = Page.content_panels + [
         MultiFieldPanel([
             FieldPanel('date'),
             FieldPanel('author'),
         ], heading="Blog Details"),
-        FieldPanel('intro'),  # **Add Subtitle to Content Panels**
+        FieldPanel('intro'),
+        FieldPanel('subtitle'),
         FieldPanel('body', classname="full"),
         FieldPanel('tags'),
         InlinePanel('gallery_images', label="Gallery Images"),
@@ -84,6 +83,7 @@ class BlogPage(Page):
 
 
 class BlogIndexPage(Page):
+    """Model for the blog index page."""
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
@@ -91,10 +91,10 @@ class BlogIndexPage(Page):
     ]
 
     subpage_types = ['blog.BlogPage']
-    parent_page_types = ['home.HomePage']  # Adjust according to your project structure
+
 
     def get_context(self, request):
-        # Get all live BlogPage objects, ordered by date descending
+        """Custom context to fetch blog pages."""
         context = super().get_context(request)
         blogpages = BlogPage.objects.live().order_by('-date')
         context['posts'] = blogpages

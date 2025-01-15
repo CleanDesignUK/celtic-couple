@@ -26,14 +26,12 @@ urlpatterns = [
     # Your custom pages (About, Contact, Work With Us, etc.)
     path('', include('pages.urls')),  # Serves '/about/', '/contact/', etc.
 
-    # Blog Django App (if using Option 2 above)
-    # path('blog/', include('blog.urls', namespace='blog')),  # Uncomment if needed
 
     # Search functionality
     path('search/', search_views.search, name='search'),
 
-    # Wagtail's page serving under 'cms/'
-    path('cms/', include(wagtail_urls)),
+    path('cms/blog/', include('blog.urls', namespace='blog')),  # Blog under /cms/blog/
+    path('cms/', include('wagtail.urls')),  # General Wagtail URLs for other content
 ]
 
 if settings.DEBUG:

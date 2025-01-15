@@ -29,15 +29,13 @@ CSRF_TRUST_ORIGINS = [
 
 # Database configuration (using your Railway Postgres credentials)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',     # Database name
-        'USER': 'postgres',    # DB username
-        'PASSWORD': 'eYsPHtJnUbPGbyMrjYFkcmuOdRIJutxQ',  # <-- Actual password from your logs
-        'HOST': 'monorail.proxy.rlwy.net',              # Host from your logs
-        'PORT': '30364',                                # Port from your logs
-    }
+    'default': dj_database_url.config(
+        default='postgresql://postgres:eYsPHtJnUbPGbyMrjYFkcmuOdRIJutxQ@monorail.proxy.rlwy.net:30364/railway',
+        conn_max_age=600,
+        ssl_require=True  # Adjust based on your DB's SSL requirements
+    )
 }
+
 
 # Wagtail admin base URL
 

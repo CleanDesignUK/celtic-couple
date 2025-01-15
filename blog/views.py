@@ -1,18 +1,16 @@
-# blog/views.py
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from .models import BlogPage
-
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import BlogPage  # Using your Wagtail BlogPage model
 
 def blog_list_view(request):
-    posts = Post.objects.all().order_by('-created_at')
-    return render(request, 'blog/blog_index_page.html', {'posts': posts})
+    """
+    List all blog posts using Wagtail's BlogPage model.
+    """
+    posts = BlogPage.objects.live().order_by('-date')  # Fetch published posts ordered by date
+    return render(request, 'blog/blog_list.html', {'posts': posts})
 
 def blog_detail_view(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/blog_page.html', {'post': post})
-
-
-
+    """
+    Show the details of a single blog post by primary key.
+    """
+    post = get_object_or_404(BlogPage, pk=pk)  # Fetch post by primary key
+    return render(request, 'blog/blog_detail.html', {'post': post})
