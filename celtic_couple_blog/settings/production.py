@@ -16,8 +16,10 @@ SECRET_KEY = 'q*d)3!g-59j1k118-b177mx4p1gdd152r2%#2f#3ss'
 
 # Allowed hosts for the application
 ALLOWED_HOSTS = [
-    'celticcouple.com',
-    'celticcouple.uk',
+    'thecelticcouple.com',
+    'www.thecelticcouple.com',
+    'www.thecelticcouple.uk',
+    'thecelticcouple.uk',
     'celtic-blog-10cb8fe7bf21.herokuapp.com',
     'glorious-space-guacamole-wrjj47wp97q35wp-8000.app.github.dev',
     'localhost',
@@ -26,8 +28,10 @@ ALLOWED_HOSTS = [
 # CSRF trusted origins
 CSRF_TRUST_ORIGINS = [
     'https://celtic-blog-10cb8fe7bf21.herokuapp.com',
-    'https://celticcouple.com',
-    'https://celticcouple.uk',
+    'https://thecelticcouple.com',
+    'https://www.thecelticcouple.com',
+    'https://www.thecelticcouple.uk',
+    'https://thecelticcouple.uk',
     'https://glorious-space-guacamole-wrjj47wp97q35wp-8000.app.github.dev',
     'http://localhost:8000',
 ]
