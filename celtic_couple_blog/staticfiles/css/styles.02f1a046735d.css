@@ -1,0 +1,315 @@
+/* General Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #FFFFFF;
+    background-color: #f8f9fa; /* Light background for content */
+}
+
+/* Root Variables */
+:root {
+    --primary-color: #4B0D0D; /* Deep Maroon */
+    --secondary-color: #FFFFFF; /* White */
+    --hover-color: #DCCCE8; /* Light Maroon */
+    --accent-color: #DCCCE8; /* For hover and accents */
+    --ko-fi-color: #DCCCE8; /* Light Purple for Ko-fi button */
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo Image */
+.navbar .logo {
+    width: 60px;
+    height: 60px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--hover-color);
+    /* Optional underline effect */
+    /* border-bottom: 2px solid var(--hover-color); */
+}
+
+/* CTA Button */
+.cta-button {
+    padding: 10px 20px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 60px; /* Adjust based on navbar height */
+    right: 20px;
+    width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+}
+
+.dropdown-menu.show {
+    display: flex;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: var(--hover-color);
+    color: var(--primary-color);
+}
+
+.cta-button-dropdown {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer .logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+/* Email Subscription Form */
+.email-subscription {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.email-subscription form {
+    display: flex;
+}
+
+.email-subscription input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+}
+
+.email-subscription input::placeholder {
+    color: #a9a9a9; /* Light grey for placeholder */
+}
+
+.email-subscription button {
+    padding: 10px 20px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-size: 14px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.email-subscription button:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    color: var(--secondary-color);
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--hover-color);
+}
+
+/* Ko-fi Button */
+.ko-fi-button-container {
+    margin-bottom: 20px;
+}
+
+.ko-fi-button {
+    background-color: var(--ko-fi-color);
+    color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ko-fi-button:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Privacy Policy Links */
+.privacy-policy {
+    margin-bottom: 20px;
+}
+
+.privacy-policy a {
+    color: var(--secondary-color);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.privacy-policy a:hover {
+    color: var(--hover-color);
+}
+
+/* Designed By Links */
+.designed-by a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.designed-by a:hover {
+    color: var(--hover-color);
+}
+
+/* Copyright */
+.footer .copyright {
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .nav-links {
+        display: none;
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 20px 10px;
+    }
+
+    .email-subscription form {
+        flex-direction: column;
+    }
+
+    .email-subscription input,
+    .email-subscription button {
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .email-subscription button {
+        margin-top: 10px;
+        border-radius: 4px;
+    }
+
+    .dropdown-menu {
+        right: 10px;
+        width: 90%;
+    }
+}
+
+/* Additional Styles */
+
+/* Ensure the dropdown menu appears above other content */
+.dropdown-menu {
+    top: 60px; /* Adjust if navbar height changes */
+}
+
+/* Transition for dropdown menu */
+.dropdown-menu {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Adjust the position of the hamburger icon */
+.navbar-toggler {
+    display: flex;
+    align-items: center;
+}
+
+/* Hide scrollbar for dropdown menu */
+.dropdown-menu::-webkit-scrollbar {
+    display: none;
+}
